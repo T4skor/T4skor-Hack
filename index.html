@@ -4,135 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>T4SKOR</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
-        /* Reseteo de márgenes y padding */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Roboto', sans-serif;
-            background: linear-gradient(135deg, #1c1c1c, #0d0d0d);
-            color: #f4f4f4;
-            line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh; /* Asegura que el body ocupe al menos el 100% de la altura de la ventana */
-        }
-
-        /* Animación de escritura */
-        @keyframes escribir {
-            0% {
-                width: 0;
-            }
-            100% {
-                width: 100%;
-            }
-        }
-
-        header {
-            text-align: center;
-            padding: 40px 0;
-            background: #00bcd4;
-            color: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            font-size: 36px;
-            letter-spacing: 1px;
-            border-bottom: 3px solid #007c8e;
-            overflow: hidden; /* Oculta lo que está fuera del contenedor */
-            white-space: nowrap; /* Evita que el texto se rompa */
-            display: block; /* Asegura que el header ocupe todo el ancho disponible */
-            width: 100%; /* Asegura que ocupe todo el ancho disponible */
-        }
-
-        header span {
-            display: inline-block;
-            overflow: hidden; /* Oculta el texto mientras se escribe */
-            white-space: nowrap;
-            width: 0;
-            animation: escribir 6s ease-in-out forwards; /* Hace la animación más fluida y larga */
-        }
-
-        nav {
-            display: flex;
-            justify-content: center;
-            background: #333;
-            padding: 12px;
-            border-top: 1px solid #444;
-            transition: background 0.3s ease;
-        }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 16px;
-            padding: 12px 20px;
-            margin: 0 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-
-        nav a:hover {
-            background: #00bcd4;
-            color: #333;
-            transform: scale(1.05);
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        h2 {
-            font-size: 28px;
-            color: #00bcd4;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
         p {
-            font-size: 18px;
-            color: #ddd;
-            margin-bottom: 20px;
-            line-height: 1.8;
+            margin-bottom: 1em; /* Espacio entre párrafos */
         }
 
-        a {
-            color: #00bcd4;
-            text-decoration: none;
-            transition: color 0.3s ease;
+        .social-buttons {
+            display: flex; /* Usamos Flexbox para que estén alineados horizontalmente */
+            gap: 10px; /* Espacio entre los botones */
         }
 
-        a:hover {
-            color: #fff;
+        .social-btn {
+            background-color: #333; /* Color de fondo de GitHub */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-size: 16px;
         }
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: #222;
-            color: #aaa;
-            font-size: 14px;
-            border-top: 1px solid #444;
-            margin-top: auto; /* Esto asegura que siempre esté en la parte inferior */
+        .social-btn i {
+            margin-right: 10px;
         }
 
-        footer a {
-            color: #00bcd4;
-            text-decoration: none;
+        .social-btn:hover {
+            background-color: #444; /* Color más oscuro en hover */
         }
 
-        footer a:hover {
-            color: #fff;
+        /* Estilos para las imágenes con animación fade-in */
+        .fade-in {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .fade-in.mostrar {
+            opacity: 1;
+        }
+
+        /* Estilos para el correo */
+        .email-btn {
+            background-color: #333; /* Color de fondo del correo */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .email-btn i {
+            margin-right: 10px;
+        }
+
+        .email-btn:hover {
+            background-color: #444; /* Color más oscuro en hover */
         }
     </style>
 </head>
@@ -147,21 +79,53 @@
     </nav>
     <div class="container">
         <h2 id="sobre-mi">Sobre mí</h2>
-        <p>Soy un chaval de 17 años, actualmente estoy estudiando 1º de bachillerato mientras investigo ciberseguridad e impresión 3D.</p>
+        <p>¡Hola! Soy Pablo, también conocido como T4skor. Soy un apasionado de la tecnología, la programación y la electrónica.</p>
+        <p>Mi camino en este mundo comenzó desde temprano, y a lo largo de los años he trabajado en proyectos como el desarrollo de juegos, la creación de aplicaciones para dispositivos electrónicos, y el análisis de datos de sensores en proyectos espaciales.</p>
+        <p>Mi objetivo siempre ha sido aprender lo máximo posible, experimentar y compartir mis conocimientos con otros.</p>
+        <p>Soy estudiante y actualmente me encuentro trabajando en varios proyectos, tanto académicos como personales.</p>
+        <p>A lo largo de mi carrera, he experimentado en áreas como la ciberseguridad, la programación en microcontroladores como el RP2040 y la creación de sitios web. Además, me encanta compartir lo que aprendo, ya sea a través de proyectos abiertos, tutoriales o colaboraciones con otros entusiastas de la tecnología.</p>
+        <p>En esta web encontrarás muchos de mis proyectos, tutoriales y cosas que me apetezca subir. Así que echa un ojo!</p>
 
         <h2 id="proyectos">Proyectos</h2>
-        <p>· Longer LK4 modificada<br>
-           · Matriz led personalizable<br>
-           · Reactor ARC de Iron-Man
-        </p>
+        <div class="proyecto">
+            <p><strong>Longer LK4 modificada</strong></p>
+            <img class="fade-in" src="" alt="Longer LK4 modificada">
+        </div>
+        <div class="proyecto">
+            <p><strong>Matriz LED personalizable</strong></p>
+            <img class="fade-in" src="media/Matriz.jpg" alt="Matriz LED personalizable">
+        </div>
+        <div class="proyecto">
+            <p><strong>Reactor ARC de Iron-Man</strong></p>
+            <img class="fade-in" src="media/ironman.jpg" alt="Reactor ARC de Iron-Man">
+        </div>
 
         <h2 id="contacto">Contacto</h2>
-        <p>
-            <a href="https://instagram.com/3d_t4skor" target="_blank">Instagram</a>    
-        </p>
+        <div class="social-buttons">
+            <button class="social-btn" onclick="window.open('https://instagram.com/3d_t4skor', '_blank')">
+                <i class="fab fa-instagram"></i>
+                Instagram
+            </button>
+            <button class="social-btn" onclick="window.open('https://github.com/T4skor', '_blank')">
+                <i class="fab fa-github"></i>
+                GitHub
+            </button>
+            <button class="email-btn" onclick="window.location.href='mailto:t4skor@gmail.com'">
+                <i class="fas fa-envelope"></i>
+                t4skor@gmail.com
+            </button>
+        </div>
     </div>
     <footer>
         &copy; 2025 - T4skor 
     </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const images = document.querySelectorAll(".fade-in");
+            setTimeout(() => {
+                images.forEach(img => img.classList.add("mostrar"));
+            }, 300);
+        });
+    </script>
 </body>
 </html>
