@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+html {
+    font-size: 16px;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
     background: linear-gradient(135deg, #1c1c1c, #0d0d0d);
@@ -13,7 +17,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    overflow-x: hidden; /* Para evitar desplazamientos horizontales */
+    overflow-x: hidden;
 }
 
 /* Animación de tipo de máquina de escribir */
@@ -25,15 +29,12 @@ body {
 /* Header */
 header {
     text-align: center;
-    padding: 40px 0;
+    padding: 1.5rem 0;
     background: #00bcd4;
     color: #fff;
-    font-size: 36px;
+    font-size: 2rem;
     letter-spacing: 1px;
     overflow: hidden;
-    white-space: nowrap;
-    display: block;
-    width: 100%;
 }
 
 header span {
@@ -49,19 +50,21 @@ nav {
     display: flex;
     justify-content: center;
     background: #333;
-    padding: 12px;
+    padding: 0.5rem;
     flex-wrap: wrap;
-    justify-content: space-around; /* Para evitar que los elementos se desborden */
+    gap: 0.5rem;
 }
 
 nav a {
     color: #fff;
     text-decoration: none;
-    font-size: 16px;
-    padding: 12px 20px;
-    margin: 0 10px;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
     text-transform: uppercase;
     border-radius: 5px;
+    flex: 1 1 auto;
+    text-align: center;
+    min-width: 120px;
 }
 
 nav a:hover {
@@ -71,23 +74,23 @@ nav a:hover {
 
 /* Contenedor */
 .container {
+    width: 95%;
     max-width: 1000px;
-    margin: 40px auto;
-    padding: 20px;
+    margin: 2rem auto;
+    padding: 1.5rem;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 8px;
 }
 
 h2 {
-    font-size: 28px;
+    font-size: 1.75rem;
     color: #00bcd4;
-    margin-bottom: 15px;
+    margin-bottom: 1rem;
 }
 
 /* Proyecto */
 .proyecto {
-    margin-bottom: 20px;
-    text-align: center; /* Centrar los proyectos */
+    margin-bottom: 1.5rem;
 }
 
 .proyecto img {
@@ -95,8 +98,7 @@ h2 {
     max-width: 400px;
     height: auto;
     border-radius: 15px;
-    display: block;
-    margin-top: 10px;
+    margin: 1rem auto;
     opacity: 0;
     transform: scale(0.95);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
@@ -110,68 +112,76 @@ h2 {
 /* Footer */
 footer {
     text-align: center;
-    padding: 20px;
+    padding: 1rem;
     background: #222;
     color: #aaa;
     margin-top: auto;
+    font-size: 0.9rem;
 }
 
-/* Estilos Responsivos para dispositivos pequeños */
-
-/* Cuando el ancho sea menor a 768px (típico en móviles y tablets) */
+/* Media Queries para Responsividad */
 @media (max-width: 768px) {
-    header {
-        font-size: 24px; /* Reducir el tamaño del texto del header */
-        padding: 20px 0;
+    html {
+        font-size: 14px;
     }
-
-    nav {
-        flex-direction: column; /* Los enlaces de navegación se organizan verticalmente */
-        padding: 10px;
+    
+    header {
+        font-size: 1.5rem;
+        padding: 1rem 0;
     }
 
     nav a {
-        font-size: 14px; /* Reducir el tamaño de los enlaces */
-        padding: 10px 15px;
-        margin: 5px 0; /* Espaciado vertical para los elementos */
+        font-size: 0.8rem;
+        min-width: 100px;
+        padding: 0.5rem;
     }
 
     .container {
-        margin: 20px;
-        padding: 15px;
+        width: 100%;
+        margin: 1rem 0;
+        padding: 1rem;
+        border-radius: 0;
     }
 
     h2 {
-        font-size: 24px; /* Ajustar el tamaño de los títulos */
-    }
-
-    .proyecto img {
-        max-width: 100%; /* Las imágenes se adaptan completamente al ancho de la pantalla */
-    }
-
-    .social-btn, .email-btn {
-        font-size: 14px; /* Ajustar el tamaño de los botones */
-        padding: 8px 16px;
+        font-size: 1.5rem;
     }
 }
 
-/* Para pantallas más pequeñas, como las de los móviles más compactos (por ejemplo, 480px) */
 @media (max-width: 480px) {
-    nav a {
-        font-size: 12px; /* Reducir aún más el tamaño de los enlaces */
-        padding: 8px 12px;
+    header span {
+        animation: none;
+        width: auto;
+        white-space: normal;
     }
 
-    .container {
-        margin: 10px;
-        padding: 10px;
+    nav {
+        gap: 0.25rem;
+        padding: 0.25rem;
+    }
+
+    nav a {
+        font-size: 0.75rem;
+        min-width: auto;
+        padding: 0.4rem 0.6rem;
     }
 
     .proyecto img {
-        max-width: 100%; /* Las imágenes se adaptan al 100% del ancho */
+        border-radius: 8px;
     }
 
     footer {
-        font-size: 14px; /* Ajustar el tamaño del texto en el footer */
+        padding: 0.75rem;
+    }
+}
+
+@media (max-width: 360px) {
+    html {
+        font-size: 13px;
+    }
+    
+    nav a {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.5rem;
     }
 }
