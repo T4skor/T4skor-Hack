@@ -13,6 +13,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    overflow-x: hidden; /* Para evitar desplazamientos horizontales */
 }
 
 /* Animación de tipo de máquina de escribir */
@@ -49,7 +50,8 @@ nav {
     justify-content: center;
     background: #333;
     padding: 12px;
-    flex-wrap: wrap; /* Permite que los enlaces se acomoden en varias filas si es necesario */
+    flex-wrap: wrap;
+    justify-content: space-around; /* Para evitar que los elementos se desborden */
 }
 
 nav a {
@@ -85,6 +87,7 @@ h2 {
 /* Proyecto */
 .proyecto {
     margin-bottom: 20px;
+    text-align: center; /* Centrar los proyectos */
 }
 
 .proyecto img {
@@ -115,17 +118,22 @@ footer {
 
 /* Estilos Responsivos para dispositivos pequeños */
 
-/* Cuando el ancho sea menor a 768px (típico en móviles) */
+/* Cuando el ancho sea menor a 768px (típico en móviles y tablets) */
 @media (max-width: 768px) {
     header {
         font-size: 24px; /* Reducir el tamaño del texto del header */
         padding: 20px 0;
     }
 
+    nav {
+        flex-direction: column; /* Los enlaces de navegación se organizan verticalmente */
+        padding: 10px;
+    }
+
     nav a {
         font-size: 14px; /* Reducir el tamaño de los enlaces */
         padding: 10px 15px;
-        margin: 5px;
+        margin: 5px 0; /* Espaciado vertical para los elementos */
     }
 
     .container {
@@ -159,7 +167,11 @@ footer {
         padding: 10px;
     }
 
-    .proyecto {
-        text-align: center; /* Centrar los elementos de los proyectos */
+    .proyecto img {
+        max-width: 100%; /* Las imágenes se adaptan al 100% del ancho */
+    }
+
+    footer {
+        font-size: 14px; /* Ajustar el tamaño del texto en el footer */
     }
 }
