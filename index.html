@@ -3,82 +3,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>T4SKOR</title>
+    <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
-        :root {
-            --bg-color-light: #f9f9f9;
-            --text-color-light: #1a1a1a;
-            --bg-color-dark: #1a1a1a;
-            --text-color-dark: #f9f9f9;
-            --accent-color: #6c63ff;
-        }[data-theme="light"] {
-        background-color: var(--bg-color-light);
-        color: var(--text-color-light);
-    }
-
-    [data-theme="dark"] {
-        background-color: var(--bg-color-dark);
-        color: var(--text-color-dark);
+        :root[data-theme="dark"] {
+            --bg-color: #121212;
+            --text-color: #ffffff;
+            --btn-bg: #333;
+            --btn-hover: #444;
+        }:root[data-theme="light"] {
+        --bg-color: #ffffff;
+        --text-color: #121212;
+        --btn-bg: #ddd;
+        --btn-hover: #ccc;
     }
 
     body {
-        font-family: 'Segoe UI', sans-serif;
         margin: 0;
         padding: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-color);
         transition: background-color 0.3s, color 0.3s;
-    }
-
-    header, nav, .container, footer {
-        padding: 20px;
-        animation: fadeIn 1s ease;
     }
 
     header {
         text-align: center;
-        font-size: 24px;
-        font-weight: bold;
+        padding: 2em 1em;
+        font-size: 1.5em;
     }
 
     nav {
         display: flex;
         justify-content: center;
+        gap: 1.5em;
         flex-wrap: wrap;
-        gap: 15px;
+        padding: 1em;
     }
 
     nav a {
         text-decoration: none;
-        color: var(--accent-color);
+        color: var(--text-color);
         font-weight: bold;
+        transition: color 0.3s;
+    }
+
+    nav a:hover {
+        text-decoration: underline;
     }
 
     .container {
+        padding: 2em;
         max-width: 800px;
-        margin: auto;
-        padding: 20px;
+        margin: 0 auto;
     }
 
     .proyecto {
-        margin-bottom: 20px;
+        margin-bottom: 2em;
     }
 
-    .proyecto img {
-        width: 100%;
-        max-width: 600px;
-        height: auto;
-        border-radius: 10px;
+    .fade-in {
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+    }
+
+    .fade-in.mostrar {
+        opacity: 1;
     }
 
     .social-buttons {
         display: flex;
         flex-direction: column;
-        align-items: center;
         gap: 10px;
+        align-items: center;
+        margin-top: 1em;
     }
 
     .social-btn, .email-btn {
-        background-color: #444;
-        color: white;
+        background-color: var(--btn-bg);
+        color: var(--text-color);
         border: none;
         padding: 10px 20px;
         border-radius: 5px;
@@ -86,43 +89,32 @@
         align-items: center;
         cursor: pointer;
         font-size: 16px;
-        transition: background-color 0.3s ease;
+        transition: background-color 0.3s;
+    }
+
+    .social-btn:hover, .email-btn:hover {
+        background-color: var(--btn-hover);
     }
 
     .social-btn i, .email-btn i {
         margin-right: 10px;
     }
 
-    .social-btn:hover, .email-btn:hover {
-        background-color: #666;
-    }
-
     footer {
         text-align: center;
-        padding: 20px;
-        font-size: 14px;
-    }
-
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
+        padding: 1em;
+        font-size: 0.9em;
     }
 
     .theme-toggle {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin-top: 20px;
-    }
-
-    .theme-toggle button {
-        padding: 8px 16px;
-        border-radius: 5px;
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        background: none;
         border: none;
+        font-size: 24px;
         cursor: pointer;
-        background-color: var(--accent-color);
-        color: white;
-        font-weight: bold;
+        color: var(--text-color);
     }
 
     @media (min-width: 768px) {
@@ -135,18 +127,17 @@
 
 </head>
 <body>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema">
+        <i class="fas fa-moon"></i>
+    </button>
     <header>
-        <span>Hola, soy T4skor</span>
+        <span>Hola 👋, soy T4skor</span>
     </header>
     <nav>
         <a href="#sobre-mi">Sobre mí</a>
         <a href="#proyectos">Proyectos</a>
         <a href="#contacto">Contacto</a>
     </nav>
-    <div class="theme-toggle">
-        <button onclick="setTheme('dark')">Oscuro</button>
-        <button onclick="setTheme('light')">Claro</button>
-    </div>
     <div class="container">
         <h2 id="sobre-mi">Sobre mí</h2>
         <p>¡Hola! Soy Pablo, también conocido como T4skor. Soy un apasionado de la tecnología, la programación y la electrónica.</p>
@@ -157,15 +148,15 @@
         <p>En esta web encontrarás muchos de mis proyectos, tutoriales y cosas que me apetezca subir. Así que echa un ojo!</p><h2 id="proyectos">Proyectos</h2>
     <div class="proyecto">
         <p><strong>Longer LK4 modificada</strong></p>
-        <img src="" alt="Longer LK4 modificada">
+        <img class="fade-in" src="" alt="Longer LK4 modificada">
     </div>
     <div class="proyecto">
         <p><strong>Matriz LED personalizable</strong></p>
-        <img src="media/Matriz.jpg" alt="Matriz LED personalizable">
+        <img class="fade-in" src="media/Matriz.jpg" alt="Matriz LED personalizable">
     </div>
     <div class="proyecto">
         <p><strong>Reactor ARC de Iron-Man</strong></p>
-        <img src="media/ironman.jpg" alt="Reactor ARC de Iron-Man">
+        <img class="fade-in" src="media/ironman.jpg" alt="Reactor ARC de Iron-Man">
     </div>
 
     <h2 id="contacto">Contacto</h2>
@@ -188,15 +179,28 @@
     &copy; 2025 - T4skor 
 </footer>
 <script>
-    function setTheme(theme) {
-        document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
-    }
+    document.addEventListener("DOMContentLoaded", function() {
+        const images = document.querySelectorAll(".fade-in");
+        setTimeout(() => {
+            images.forEach(img => img.classList.add("mostrar"));
+        }, 300);
 
-    // Establecer el tema por defecto en oscuro si no hay preferencia
-    document.addEventListener("DOMContentLoaded", function () {
-        const savedTheme = localStorage.getItem('theme') || 'dark';
-        document.documentElement.setAttribute('data-theme', savedTheme);
+        const toggleBtn = document.getElementById("theme-toggle");
+        const root = document.documentElement;
+
+        function setTheme(theme) {
+            root.setAttribute("data-theme", theme);
+            localStorage.setItem("theme", theme);
+            toggleBtn.innerHTML = theme === "dark" ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+        }
+
+        toggleBtn.addEventListener("click", () => {
+            const current = root.getAttribute("data-theme");
+            setTheme(current === "dark" ? "light" : "dark");
+        });
+
+        const savedTheme = localStorage.getItem("theme") || "dark";
+        setTheme(savedTheme);
     });
 </script>
 
