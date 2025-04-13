@@ -1,217 +1,201 @@
-<!DOCTYPE html><html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>T4SKOR</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
-  <style>
-    :root {
-      --bg-color: #f9f9f9;
-      --text-color: #222;
-      --accent-color: #0077ff;
-      --button-bg: #333;
-      --button-hover: #444;
-    }* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+<!DOCTYPE html><html lang="es"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T4SKOR</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f9f9f9;
+        color: #333;
+        padding: 20px;
+        animation: fadeIn 1s ease-in-out;
+    }
 
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  line-height: 1.6;
-  padding: 20px;
-}
+    header {
+        text-align: center;
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
 
-header {
-  text-align: center;
-  margin-bottom: 30px;
-  font-size: 2rem;
-  animation: fadeDown 1s ease-in-out;
-}
+    nav {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-bottom: 30px;
+        animation: slideDown 1s ease-in-out;
+    }
 
-nav {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-bottom: 30px;
-  flex-wrap: wrap;
-  animation: fadeDown 1.2s ease-in-out;
-}
+    nav a {
+        text-decoration: none;
+        background-color: #333;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+    }
 
-nav a {
-  text-decoration: none;
-  color: var(--accent-color);
-  font-weight: bold;
-  transition: color 0.3s ease;
-}
+    nav a:hover {
+        background-color: #555;
+    }
 
-nav a:hover {
-  color: #0055cc;
-}
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
 
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 10px;
-}
+    h2 {
+        margin-top: 30px;
+        margin-bottom: 15px;
+        font-size: 1.8em;
+    }
 
-h2 {
-  margin-top: 40px;
-  margin-bottom: 20px;
-  font-size: 1.8rem;
-  animation: fadeUp 1s ease-in-out;
-}
+    p {
+        margin-bottom: 1em;
+        line-height: 1.6;
+    }
 
-p {
-  margin-bottom: 1em;
-  animation: fadeUp 1s ease-in-out;
-}
+    .proyecto {
+        margin-bottom: 20px;
+        text-align: center;
+    }
 
-.proyecto {
-  margin-bottom: 30px;
-  animation: fadeUp 1s ease-in-out;
-}
+    .proyecto img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+    }
 
-.proyecto img {
-  width: 100%;
-  max-width: 600px;
-  height: auto;
-  border-radius: 10px;
-}
+    .fade-in.mostrar {
+        opacity: 1;
+    }
 
-.social-buttons {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  animation: fadeUp 1.5s ease-in-out;
-}
+    .social-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        margin-top: 20px;
+    }
 
-@media (min-width: 768px) {
-  .social-buttons {
-    flex-direction: row;
-    justify-content: center;
-  }
+    .social-btn,
+    .email-btn {
+        background-color: #333;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
 
-  .proyecto {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
+    .social-btn i,
+    .email-btn i {
+        margin-right: 10px;
+    }
 
-  .proyecto img {
-    max-width: 300px;
-  }
-}
+    .social-btn:hover,
+    .email-btn:hover {
+        background-color: #444;
+        transform: scale(1.05);
+    }
 
-.social-btn,
-.email-btn {
-  background-color: var(--button-bg);
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
+    footer {
+        text-align: center;
+        margin-top: 40px;
+        font-size: 0.9em;
+        color: #777;
+    }
 
-.social-btn i,
-.email-btn i {
-  margin-right: 10px;
-}
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
 
-.social-btn:hover,
-.email-btn:hover {
-  background-color: var(--button-hover);
-  transform: translateY(-3px);
-}
+        to {
+            opacity: 1;
+        }
+    }
 
-footer {
-  text-align: center;
-  margin-top: 50px;
-  font-size: 0.9rem;
-  color: #777;
-}
+    @keyframes slideDown {
+        from {
+            transform: translateY(-20px);
+            opacity: 0;
+        }
 
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+</style>
 
-@keyframes fadeDown {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+</head><body>
+    <header>
+        <span>Hola, soy T4skor</span>
+    </header>
+    <nav>
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="container">
+        <h2 id="sobre-mi">Sobre mí</h2>
+        <p>¡Hola! Soy Pablo, también conocido como T4skor. Soy un apasionado de la tecnología, la programación y la electrónica.</p>
+        <p>Mi camino en este mundo comenzó desde temprano, y a lo largo de los años he trabajado en proyectos como el desarrollo de juegos, la creación de aplicaciones para dispositivos electrónicos, y el análisis de datos de sensores en proyectos espaciales.</p>
+        <p>Mi objetivo siempre ha sido aprender lo máximo posible, experimentar y compartir mis conocimientos con otros.</p>
+        <p>Soy estudiante y actualmente me encuentro trabajando en varios proyectos, tanto académicos como personales.</p>
+        <p>A lo largo de mi carrera, he experimentado en áreas como la ciberseguridad, la programación en microcontroladores como el RP2040 y la creación de sitios web. Además, me encanta compartir lo que aprendo, ya sea a través de proyectos abiertos, tutoriales o colaboraciones con otros entusiastas de la tecnología.</p>
+        <p>En esta web encontrarás muchos de mis proyectos, tutoriales y cosas que me apetezca subir. Así que echa un ojo!</p><h2 id="proyectos">Proyectos</h2>
+    <div class="proyecto">
+        <p><strong>Longer LK4 modificada</strong></p>
+        <img class="fade-in" src="" alt="Longer LK4 modificada">
+    </div>
+    <div class="proyecto">
+        <p><strong>Matriz LED personalizable</strong></p>
+        <img class="fade-in" src="media/Matriz.jpg" alt="Matriz LED personalizable">
+    </div>
+    <div class="proyecto">
+        <p><strong>Reactor ARC de Iron-Man</strong></p>
+        <img class="fade-in" src="media/ironman.jpg" alt="Reactor ARC de Iron-Man">
+    </div>
 
-  </style>
-</head>
-<body>
-  <header>
-    <span>Hola, soy T4skor</span>
-  </header>
-  <nav>
-    <a href="#sobre-mi">Sobre mí</a>
-    <a href="#proyectos">Proyectos</a>
-    <a href="#contacto">Contacto</a>
-  </nav>
-  <div class="container">
-    <h2 id="sobre-mi">Sobre mí</h2>
-    <p>¡Hola! Soy Pablo, también conocido como T4skor. Soy un apasionado de la tecnología, la programación y la electrónica.</p>
-    <p>Mi camino en este mundo comenzó desde temprano, y a lo largo de los años he trabajado en proyectos como el desarrollo de juegos, la creación de aplicaciones para dispositivos electrónicos, y el análisis de datos de sensores en proyectos espaciales.</p>
-    <p>Mi objetivo siempre ha sido aprender lo máximo posible, experimentar y compartir mis conocimientos con otros.</p>
-    <p>Soy estudiante y actualmente me encuentro trabajando en varios proyectos, tanto académicos como personales.</p>
-    <p>A lo largo de mi carrera, he experimentado en áreas como la ciberseguridad, la programación en microcontroladores como el RP2040 y la creación de sitios web. Además, me encanta compartir lo que aprendo, ya sea a través de proyectos abiertos, tutoriales o colaboraciones con otros entusiastas de la tecnología.</p>
-    <p>En esta web encontrarás muchos de mis proyectos, tutoriales y cosas que me apetezca subir. Así que echa un ojo!</p><h2 id="proyectos">Proyectos</h2>
-<div class="proyecto">
-  <img src="" alt="Longer LK4 modificada">
-  <p><strong>Longer LK4 modificada</strong></p>
+    <h2 id="contacto">Contacto</h2>
+    <div class="social-buttons">
+        <button class="social-btn" onclick="window.open('https://instagram.com/3d_t4skor', '_blank')">
+            <i class="fab fa-instagram"></i>
+            Instagram
+        </button>
+        <button class="social-btn" onclick="window.open('https://github.com/T4skor', '_blank')">
+            <i class="fab fa-github"></i>
+            GitHub
+        </button>
+        <button class="email-btn" onclick="window.location.href='mailto:t4skor@gmail.com'">
+            <i class="fas fa-envelope"></i>
+            t4skor@gmail.com
+        </button>
+    </div>
 </div>
-<div class="proyecto">
-  <img src="media/Matriz.jpg" alt="Matriz LED personalizable">
-  <p><strong>Matriz LED personalizable</strong></p>
-</div>
-<div class="proyecto">
-  <img src="media/ironman.jpg" alt="Reactor ARC de Iron-Man">
-  <p><strong>Reactor ARC de Iron-Man</strong></p>
-</div>
-
-<h2 id="contacto">Contacto</h2>
-<div class="social-buttons">
-  <button class="social-btn" onclick="window.open('https://instagram.com/3d_t4skor', '_blank')">
-    <i class="fab fa-instagram"></i>
-    Instagram
-  </button>
-  <button class="social-btn" onclick="window.open('https://github.com/T4skor', '_blank')">
-    <i class="fab fa-github"></i>
-    GitHub
-  </button>
-  <button class="email-btn" onclick="window.location.href='mailto:t4skor@gmail.com'">
-    <i class="fas fa-envelope"></i>
-    t4skor@gmail.com
-  </button>
-</div>
-
-  </div>
-  <footer>
+<footer>
     &copy; 2025 - T4skor
-  </footer>
-</body>
-</html>
+</footer>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const images = document.querySelectorAll(".fade-in");
+        setTimeout(() => {
+            images.forEach(img => img.classList.add("mostrar"));
+        }, 300);
+    });
+</script>
+
+</body></html>
