@@ -4,10 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>T4SKOR</title>
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
     :root {
       --color-bg: #0d1117;
@@ -137,6 +134,7 @@
       background-color: var(--color-secondary);
       padding: 1.5em;
       border-radius: 12px;
+      display: none;
     }
 
     #editor input,
@@ -163,20 +161,53 @@
     #editor button:hover {
       background-color: var(--color-hover);
     }
+
+    #login {
+      margin-top: 2em;
+      background-color: var(--color-secondary);
+      padding: 1.5em;
+      border-radius: 12px;
+    }
+
+    #login input {
+      width: 100%;
+      padding: 0.5em;
+      margin: 0.5em 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+    }
+
+    #login button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background-color: var(--color-primary);
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    #login button:hover {
+      background-color: var(--color-hover);
+    }
   </style>
 </head>
 <body>
   <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
     <i class="fas fa-moon" id="themeIcon"></i>
   </button>
+
   <header>
     <h1>Hola, soy T4skor</h1>
   </header>
+
   <nav>
     <a href="#sobre-mi">Sobre mí</a>
     <a href="#proyectos">Proyectos</a>
     <a href="#contacto">Contacto</a>
   </nav>
+
   <div class="container">
     <h2 id="sobre-mi">Sobre mí</h2>
     <p>¡Hola! Soy Pablo, también conocido como T4skor...</p>
@@ -197,6 +228,15 @@
       </div>
     </div>
 
+    <!-- LOGIN -->
+    <div id="login">
+      <h3>Iniciar sesión como administrador</h3>
+      <input type="text" id="username" placeholder="Usuario" />
+      <input type="password" id="password" placeholder="Contraseña" />
+      <button onclick="iniciarSesion()">Entrar</button>
+    </div>
+
+    <!-- EDITOR -->
     <div id="editor">
       <h3>Añadir nuevo proyecto</h3>
       <input type="text" id="tituloProyecto" placeholder="Título del proyecto" />
@@ -222,7 +262,7 @@
   <footer>&copy; 2025 - T4skor</footer>
 
   <script>
-    // Fade-in effect
+    // Fade-in
     document.addEventListener("DOMContentLoaded", function () {
       const images = document.querySelectorAll(".fade-in");
       setTimeout(() => {
@@ -247,7 +287,7 @@
       });
     });
 
-    // Editor dinámico
+    // Añadir proyecto
     function agregarProyecto() {
       const titulo = document.getElementById("tituloProyecto").value.trim();
       const imagen = document.getElementById("urlImagen").value.trim();
@@ -268,10 +308,22 @@
       `;
       contenedor.appendChild(div);
 
-      // Limpiar campos
       document.getElementById("tituloProyecto").value = "";
       document.getElementById("urlImagen").value = "";
       document.getElementById("descripcionProyecto").value = "";
+    }
+
+    // Inicio de sesión
+    function iniciarSesion() {
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      if (username === "admin" && password === "t4skor123") {
+        document.getElementById("login").style.display = "none";
+        document.getElementById("editor").style.display = "block";
+      } else {
+        alert("Credenciales incorrectas");
+      }
     }
   </script>
 </body>
