@@ -3,94 +3,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>T4SKOR</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
-            --bg-color: #121212;
-            --text-color: #ffffff;
-            --accent-color: #1f1f1f;
+            --color-bg: #0d1117;
+            --color-text: #c9d1d9;
+            --color-primary: #58a6ff;
+            --color-secondary: #161b22;
+            --color-hover: #1f6feb;
         }[data-theme="light"] {
-        --bg-color: #f5f5f5;
-        --text-color: #000000;
-        --accent-color: #e0e0e0;
+        --color-bg: #f0f0f0;
+        --color-text: #1f1f1f;
+        --color-primary: #007bff;
+        --color-secondary: #ffffff;
+        --color-hover: #0056b3;
     }
 
     body {
         margin: 0;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-color: var(--bg-color);
-        color: var(--text-color);
-        transition: background-color 0.3s, color 0.3s;
+        background-color: var(--color-bg);
+        color: var(--color-text);
+        transition: background-color 0.5s, color 0.5s;
     }
 
-    header {
-        padding: 1em;
+    header, nav, footer {
         text-align: center;
-        font-size: 1.5em;
-    }
-
-    nav {
-        display: flex;
-        justify-content: center;
-        gap: 1em;
         padding: 1em;
-        background-color: var(--accent-color);
-        flex-wrap: wrap;
     }
 
     nav a {
+        color: var(--color-text);
         text-decoration: none;
-        color: var(--text-color);
+        margin: 0 1em;
         font-weight: bold;
+        transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+        color: var(--color-primary);
     }
 
     .container {
+        max-width: 900px;
+        margin: 0 auto;
         padding: 2em;
-        max-width: 800px;
-        margin: auto;
     }
 
-    h2 {
-        margin-top: 2em;
+    .proyecto {
+        margin-bottom: 2em;
+        background: var(--color-secondary);
+        padding: 1em;
+        border-radius: 12px;
+        box-shadow: 0 0 15px rgba(0, 123, 255, 0.1);
+        transition: transform 0.3s ease;
     }
 
-    p {
-        margin-bottom: 1em;
+    .proyecto:hover {
+        transform: scale(1.02);
     }
 
-    .proyecto img {
-        max-width: 100%;
+    img.fade-in {
+        width: 100%;
+        max-width: 500px;
         border-radius: 10px;
-        margin-top: 0.5em;
-    }
-
-    .fade-in {
+        margin-top: 10px;
         opacity: 0;
         transition: opacity 1s ease-in-out;
     }
 
-    .fade-in.mostrar {
+    img.fade-in.mostrar {
         opacity: 1;
     }
 
     .social-buttons {
         display: flex;
         flex-direction: column;
-        align-items: center;
         gap: 10px;
+        align-items: center;
     }
 
     .social-btn, .email-btn {
-        background-color: var(--accent-color);
-        color: var(--text-color);
+        background-color: var(--color-primary);
+        color: white;
         border: none;
         padding: 10px 20px;
-        border-radius: 5px;
+        border-radius: 8px;
         display: flex;
         align-items: center;
         cursor: pointer;
         font-size: 16px;
-        transition: background-color 0.3s;
+        transition: background-color 0.3s ease;
     }
 
     .social-btn i, .email-btn i {
@@ -98,26 +101,23 @@
     }
 
     .social-btn:hover, .email-btn:hover {
-        background-color: #666;
+        background-color: var(--color-hover);
     }
 
-    footer {
-        text-align: center;
-        padding: 1em;
-        margin-top: 2em;
-        background-color: var(--accent-color);
-    }
-
-    #theme-toggle {
+    .theme-toggle {
         position: fixed;
         top: 10px;
         right: 10px;
         background: none;
         border: none;
-        color: var(--text-color);
-        font-size: 1.5em;
+        font-size: 24px;
+        color: var(--color-text);
         cursor: pointer;
-        z-index: 1000;
+        transition: color 0.3s ease;
+    }
+
+    .theme-toggle:hover {
+        color: var(--color-primary);
     }
 
     @media (min-width: 768px) {
@@ -130,11 +130,11 @@
 
 </head>
 <body>
-    <button id="theme-toggle" aria-label="Cambiar tema">
-        <i class="fas fa-moon"></i>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <i class="fas fa-moon" id="themeIcon"></i>
     </button>
     <header>
-        <span>Hola 👋, soy T4skor</span>
+        <h1>Hola, soy T4skor</h1>
     </header>
     <nav>
         <a href="#sobre-mi">Sobre mí</a>
@@ -148,7 +148,7 @@
         <p>Mi objetivo siempre ha sido aprender lo máximo posible, experimentar y compartir mis conocimientos con otros.</p>
         <p>Soy estudiante y actualmente me encuentro trabajando en varios proyectos, tanto académicos como personales.</p>
         <p>A lo largo de mi carrera, he experimentado en áreas como la ciberseguridad, la programación en microcontroladores como el RP2040 y la creación de sitios web. Además, me encanta compartir lo que aprendo, ya sea a través de proyectos abiertos, tutoriales o colaboraciones con otros entusiastas de la tecnología.</p>
-        <p>En esta web encontrarás muchos de mis proyectos, tutoriales y cosas que me apetezca subir. Así que echa un ojo!</p><h2 id="proyectos">Proyectos</h2>
+        <p>En esta web encontrarás muchos de mis proyectos, tutoriales y cosas que me apetezca subir. Así que ¡echa un ojo!</p><h2 id="proyectos">Proyectos</h2>
     <div class="proyecto">
         <p><strong>Longer LK4 modificada</strong></p>
         <img class="fade-in" src="" alt="Longer LK4 modificada">
@@ -179,36 +179,32 @@
     </div>
 </div>
 <footer>
-    &copy; 2025 - T4skor 
+    &copy; 2025 - T4skor
 </footer>
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
+    // Fade-in effect
+    document.addEventListener("DOMContentLoaded", function() {
         const images = document.querySelectorAll(".fade-in");
         setTimeout(() => {
             images.forEach(img => img.classList.add("mostrar"));
         }, 300);
 
-        const toggleBtn = document.getElementById("theme-toggle");
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const savedTheme = localStorage.getItem("theme");
+        const themeToggle = document.getElementById("themeToggle");
+        const themeIcon = document.getElementById("themeIcon");
 
-        if (savedTheme) {
-            document.documentElement.setAttribute("data-theme", savedTheme);
-            toggleBtn.innerHTML = savedTheme === 'dark' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
-        } else if (prefersDark) {
-            document.documentElement.setAttribute("data-theme", "dark");
-            toggleBtn.innerHTML = '<i class="fas fa-moon"></i>';
-        } else {
-            document.documentElement.setAttribute("data-theme", "light");
-            toggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
+        function setTheme(theme) {
+            document.documentElement.setAttribute("data-theme", theme);
+            localStorage.setItem("theme", theme);
+            themeIcon.className = theme === "light" ? "fas fa-sun" : "fas fa-moon";
         }
 
-        toggleBtn.addEventListener("click", () => {
+        const savedTheme = localStorage.getItem("theme") || "dark";
+        setTheme(savedTheme);
+
+        themeToggle.addEventListener("click", () => {
             const currentTheme = document.documentElement.getAttribute("data-theme");
             const newTheme = currentTheme === "dark" ? "light" : "dark";
-            document.documentElement.setAttribute("data-theme", newTheme);
-            localStorage.setItem("theme", newTheme);
-            toggleBtn.innerHTML = newTheme === 'dark' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+            setTheme(newTheme);
         });
     });
 </script>
