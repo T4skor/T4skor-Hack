@@ -131,38 +131,6 @@
         justify-content: center;
       }
     }
-
-    #editor {
-      margin-top: 3em;
-      background-color: var(--color-secondary);
-      padding: 1.5em;
-      border-radius: 12px;
-    }
-
-    #editor input,
-    #editor textarea {
-      width: 100%;
-      padding: 0.5em;
-      margin: 0.5em 0;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      font-size: 1em;
-    }
-
-    #editor button {
-      padding: 10px 20px;
-      border: none;
-      border-radius: 8px;
-      background-color: var(--color-primary);
-      color: white;
-      cursor: pointer;
-      font-size: 16px;
-      transition: background-color 0.3s;
-    }
-
-    #editor button:hover {
-      background-color: var(--color-hover);
-    }
   </style>
 </head>
 <body>
@@ -197,14 +165,6 @@
       </div>
     </div>
 
-    <div id="editor">
-      <h3>Añadir nuevo proyecto</h3>
-      <input type="text" id="tituloProyecto" placeholder="Título del proyecto" />
-      <input type="text" id="urlImagen" placeholder="URL de la imagen" />
-      <textarea id="descripcionProyecto" rows="3" placeholder="Descripción (opcional)"></textarea>
-      <button onclick="agregarProyecto()">Añadir</button>
-    </div>
-
     <h2 id="contacto">Contacto</h2>
     <div class="social-buttons">
       <button class="social-btn" onclick="window.open('https://instagram.com/3d_t4skor', '_blank')">
@@ -222,7 +182,7 @@
   <footer>&copy; 2025 - T4skor</footer>
 
   <script>
-    // Fade-in effect
+    // Fade-in effect y tema
     document.addEventListener("DOMContentLoaded", function () {
       const images = document.querySelectorAll(".fade-in");
       setTimeout(() => {
@@ -246,33 +206,6 @@
         setTheme(currentTheme === "dark" ? "light" : "dark");
       });
     });
-
-    // Editor dinámico
-    function agregarProyecto() {
-      const titulo = document.getElementById("tituloProyecto").value.trim();
-      const imagen = document.getElementById("urlImagen").value.trim();
-      const descripcion = document.getElementById("descripcionProyecto").value.trim();
-
-      if (!titulo || !imagen) {
-        alert("Introduce al menos un título y una imagen.");
-        return;
-      }
-
-      const contenedor = document.getElementById("proyectos");
-      const div = document.createElement("div");
-      div.className = "proyecto";
-      div.innerHTML = 
-        <p><strong>${titulo}</strong></p>
-        ${descripcion ? <p>${descripcion}</p> : ""}
-        <img class="fade-in mostrar" src="${imagen}" alt="${titulo}" />
-      ;
-      contenedor.appendChild(div);
-
-      // Limpiar campos
-      document.getElementById("tituloProyecto").value = "";
-      document.getElementById("urlImagen").value = "";
-      document.getElementById("descripcionProyecto").value = "";
-    }
   </script>
 </body>
 </html>
