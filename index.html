@@ -1,76 +1,142 @@
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html><html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>T4SKOR</title>
-    <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
-        p {
-            margin-bottom: 1em; /* Espacio entre párrafos */
-        }
+        :root {
+            --primary: #1f2937;
+            --accent: #6366f1;
+            --text: #f3f4f6;
+            --bg: #111827;
+            --card: #1e293b;
+            --hover: #374151;
+        }* {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
 
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+    }
+
+    header {
+        background-color: var(--primary);
+        padding: 1rem;
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    nav {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        background-color: var(--card);
+        padding: 1rem 0;
+        flex-wrap: wrap;
+    }
+
+    nav a {
+        color: var(--text);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+    }
+
+    nav a:hover {
+        color: var(--accent);
+    }
+
+    .container {
+        max-width: 960px;
+        margin: auto;
+        padding: 2rem;
+    }
+
+    h2 {
+        margin-bottom: 1rem;
+        color: var(--accent);
+    }
+
+    p {
+        margin-bottom: 1rem;
+    }
+
+    .proyecto {
+        background-color: var(--card);
+        border-radius: 10px;
+        padding: 1rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .proyecto img {
+        width: 100%;
+        border-radius: 8px;
+        margin-top: 0.5rem;
+    }
+
+    .social-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .social-btn,
+    .email-btn {
+        background-color: var(--accent);
+        color: var(--text);
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .social-btn i,
+    .email-btn i {
+        margin-right: 0.5rem;
+    }
+
+    .social-btn:hover,
+    .email-btn:hover {
+        background-color: var(--hover);
+    }
+
+    footer {
+        text-align: center;
+        padding: 1rem;
+        background-color: var(--primary);
+        margin-top: 2rem;
+    }
+
+    @media (max-width: 600px) {
         .social-buttons {
-            display: flex; /* Usamos Flexbox para que estén alineados horizontalmente */
-            gap: 10px; /* Espacio entre los botones */
+            flex-direction: column;
+            align-items: stretch;
         }
 
-        .social-btn {
-            background-color: #333; /* Color de fondo de GitHub */
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-            font-size: 16px;
+        nav {
+            flex-direction: column;
+            gap: 1rem;
         }
+    }
+</style>
 
-        .social-btn i {
-            margin-right: 10px;
-        }
-
-        .social-btn:hover {
-            background-color: #444; /* Color más oscuro en hover */
-        }
-
-        /* Estilos para las imágenes con animación fade-in */
-        .fade-in {
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
-
-        .fade-in.mostrar {
-            opacity: 1;
-        }
-
-        /* Estilos para el correo */
-        .email-btn {
-            background-color: #333; /* Color de fondo del correo */
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        .email-btn i {
-            margin-right: 10px;
-        }
-
-        .email-btn:hover {
-            background-color: #444; /* Color más oscuro en hover */
-        }
-    </style>
 </head>
 <body>
     <header>
-        <span>Hola 👋, soy T4skor</span>
+        Hola, soy T4skor
     </header>
     <nav>
         <a href="#sobre-mi">Sobre mí</a>
@@ -84,48 +150,39 @@
         <p>Mi objetivo siempre ha sido aprender lo máximo posible, experimentar y compartir mis conocimientos con otros.</p>
         <p>Soy estudiante y actualmente me encuentro trabajando en varios proyectos, tanto académicos como personales.</p>
         <p>A lo largo de mi carrera, he experimentado en áreas como la ciberseguridad, la programación en microcontroladores como el RP2040 y la creación de sitios web. Además, me encanta compartir lo que aprendo, ya sea a través de proyectos abiertos, tutoriales o colaboraciones con otros entusiastas de la tecnología.</p>
-        <p>En esta web encontrarás muchos de mis proyectos, tutoriales y cosas que me apetezca subir. Así que echa un ojo!</p>
-
-        <h2 id="proyectos">Proyectos</h2>
-        <div class="proyecto">
-            <p><strong>Longer LK4 modificada</strong></p>
-            <img class="fade-in" src="" alt="Longer LK4 modificada">
-        </div>
-        <div class="proyecto">
-            <p><strong>Matriz LED personalizable</strong></p>
-            <img class="fade-in" src="media/Matriz.jpg" alt="Matriz LED personalizable">
-        </div>
-        <div class="proyecto">
-            <p><strong>Reactor ARC de Iron-Man</strong></p>
-            <img class="fade-in" src="media/ironman.jpg" alt="Reactor ARC de Iron-Man">
-        </div>
-
-        <h2 id="contacto">Contacto</h2>
-        <div class="social-buttons">
-            <button class="social-btn" onclick="window.open('https://instagram.com/3d_t4skor', '_blank')">
-                <i class="fab fa-instagram"></i>
-                Instagram
-            </button>
-            <button class="social-btn" onclick="window.open('https://github.com/T4skor', '_blank')">
-                <i class="fab fa-github"></i>
-                GitHub
-            </button>
-            <button class="email-btn" onclick="window.location.href='mailto:t4skor@gmail.com'">
-                <i class="fas fa-envelope"></i>
-                t4skor@gmail.com
-            </button>
-        </div>
+        <p>En esta web encontrarás muchos de mis proyectos, tutoriales y cosas que me apetezca subir. Así que echa un ojo!</p><h2 id="proyectos">Proyectos</h2>
+    <div class="proyecto">
+        <p><strong>Longer LK4 modificada</strong></p>
+        <img src="" alt="Longer LK4 modificada">
     </div>
-    <footer>
-        &copy; 2025 - T4skor 
-    </footer>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const images = document.querySelectorAll(".fade-in");
-            setTimeout(() => {
-                images.forEach(img => img.classList.add("mostrar"));
-            }, 300);
-        });
-    </script>
+    <div class="proyecto">
+        <p><strong>Matriz LED personalizable</strong></p>
+        <img src="media/Matriz.jpg" alt="Matriz LED personalizable">
+    </div>
+    <div class="proyecto">
+        <p><strong>Reactor ARC de Iron-Man</strong></p>
+        <img src="media/ironman.jpg" alt="Reactor ARC de Iron-Man">
+    </div>
+
+    <h2 id="contacto">Contacto</h2>
+    <div class="social-buttons">
+        <button class="social-btn" onclick="window.open('https://instagram.com/3d_t4skor', '_blank')">
+            <i class="fab fa-instagram"></i>
+            Instagram
+        </button>
+        <button class="social-btn" onclick="window.open('https://github.com/T4skor', '_blank')">
+            <i class="fab fa-github"></i>
+            GitHub
+        </button>
+        <button class="email-btn" onclick="window.location.href='mailto:t4skor@gmail.com'">
+            <i class="fas fa-envelope"></i>
+            t4skor@gmail.com
+        </button>
+    </div>
+</div>
+<footer>
+    &copy; 2025 - T4skor 
+</footer>
+
 </body>
 </html>
