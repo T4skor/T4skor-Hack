@@ -1,26 +1,22 @@
-<!DOCTYPE html><html lang="es" data-theme="dark">
+<!DOCTYPE html><html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>T4SKOR</title>
-    <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
-        :root[data-theme="dark"] {
+        :root {
             --bg-color: #121212;
             --text-color: #ffffff;
-            --btn-bg: #333;
-            --btn-hover: #444;
-        }:root[data-theme="light"] {
-        --bg-color: #ffffff;
-        --text-color: #121212;
-        --btn-bg: #ddd;
-        --btn-hover: #ccc;
+            --accent-color: #1f1f1f;
+        }[data-theme="light"] {
+        --bg-color: #f5f5f5;
+        --text-color: #000000;
+        --accent-color: #e0e0e0;
     }
 
     body {
         margin: 0;
-        padding: 0;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         background-color: var(--bg-color);
         color: var(--text-color);
@@ -28,38 +24,44 @@
     }
 
     header {
+        padding: 1em;
         text-align: center;
-        padding: 2em 1em;
         font-size: 1.5em;
     }
 
     nav {
         display: flex;
         justify-content: center;
-        gap: 1.5em;
-        flex-wrap: wrap;
+        gap: 1em;
         padding: 1em;
+        background-color: var(--accent-color);
+        flex-wrap: wrap;
     }
 
     nav a {
         text-decoration: none;
         color: var(--text-color);
         font-weight: bold;
-        transition: color 0.3s;
-    }
-
-    nav a:hover {
-        text-decoration: underline;
     }
 
     .container {
         padding: 2em;
         max-width: 800px;
-        margin: 0 auto;
+        margin: auto;
     }
 
-    .proyecto {
-        margin-bottom: 2em;
+    h2 {
+        margin-top: 2em;
+    }
+
+    p {
+        margin-bottom: 1em;
+    }
+
+    .proyecto img {
+        max-width: 100%;
+        border-radius: 10px;
+        margin-top: 0.5em;
     }
 
     .fade-in {
@@ -74,13 +76,12 @@
     .social-buttons {
         display: flex;
         flex-direction: column;
-        gap: 10px;
         align-items: center;
-        margin-top: 1em;
+        gap: 10px;
     }
 
     .social-btn, .email-btn {
-        background-color: var(--btn-bg);
+        background-color: var(--accent-color);
         color: var(--text-color);
         border: none;
         padding: 10px 20px;
@@ -92,29 +93,31 @@
         transition: background-color 0.3s;
     }
 
-    .social-btn:hover, .email-btn:hover {
-        background-color: var(--btn-hover);
-    }
-
     .social-btn i, .email-btn i {
         margin-right: 10px;
+    }
+
+    .social-btn:hover, .email-btn:hover {
+        background-color: #666;
     }
 
     footer {
         text-align: center;
         padding: 1em;
-        font-size: 0.9em;
+        margin-top: 2em;
+        background-color: var(--accent-color);
     }
 
-    .theme-toggle {
+    #theme-toggle {
         position: fixed;
         top: 10px;
         right: 10px;
         background: none;
         border: none;
-        font-size: 24px;
-        cursor: pointer;
         color: var(--text-color);
+        font-size: 1.5em;
+        cursor: pointer;
+        z-index: 1000;
     }
 
     @media (min-width: 768px) {
@@ -127,7 +130,7 @@
 
 </head>
 <body>
-    <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema">
+    <button id="theme-toggle" aria-label="Cambiar tema">
         <i class="fas fa-moon"></i>
     </button>
     <header>
@@ -179,28 +182,34 @@
     &copy; 2025 - T4skor 
 </footer>
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
         const images = document.querySelectorAll(".fade-in");
         setTimeout(() => {
             images.forEach(img => img.classList.add("mostrar"));
         }, 300);
 
         const toggleBtn = document.getElementById("theme-toggle");
-        const root = document.documentElement;
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const savedTheme = localStorage.getItem("theme");
 
-        function setTheme(theme) {
-            root.setAttribute("data-theme", theme);
-            localStorage.setItem("theme", theme);
-            toggleBtn.innerHTML = theme === "dark" ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+        if (savedTheme) {
+            document.documentElement.setAttribute("data-theme", savedTheme);
+            toggleBtn.innerHTML = savedTheme === 'dark' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+        } else if (prefersDark) {
+            document.documentElement.setAttribute("data-theme", "dark");
+            toggleBtn.innerHTML = '<i class="fas fa-moon"></i>';
+        } else {
+            document.documentElement.setAttribute("data-theme", "light");
+            toggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
         }
 
         toggleBtn.addEventListener("click", () => {
-            const current = root.getAttribute("data-theme");
-            setTheme(current === "dark" ? "light" : "dark");
+            const currentTheme = document.documentElement.getAttribute("data-theme");
+            const newTheme = currentTheme === "dark" ? "light" : "dark";
+            document.documentElement.setAttribute("data-theme", newTheme);
+            localStorage.setItem("theme", newTheme);
+            toggleBtn.innerHTML = newTheme === 'dark' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
         });
-
-        const savedTheme = localStorage.getItem("theme") || "dark";
-        setTheme(savedTheme);
     });
 </script>
 
