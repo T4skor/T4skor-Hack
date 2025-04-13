@@ -32,7 +32,19 @@
       transition: background-color 0.5s, color 0.5s;
     }
 
-    header, nav, footer {
+    header, footer {
+      text-align: center;
+      padding: 1em;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: var(--color-bg);
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
       text-align: center;
       padding: 1em;
     }
@@ -53,6 +65,7 @@
       max-width: 900px;
       margin: 0 auto;
       padding: 2em;
+      margin-top: 100px; /* Ajusta según el alto de la nav */
     }
 
     .proyecto {
