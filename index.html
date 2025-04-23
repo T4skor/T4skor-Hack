@@ -1,232 +1,386 @@
+<!-- Gift from OD&H -->
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>T4SKOR</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <style>
-    :root {
-      --color-bg: #0d1117;
-      --color-text: #c9d1d9;
-      --color-primary: #58a6ff;
-      --color-secondary: #161b22;
-      --color-hover: #1f6feb;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>T4SKOR - Innovator & Creator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto+Mono:wght@400;500&display=swap">
+    <style>
+        :root {
+            --color-bg: #121212;
+            --color-text: #f0f0f0;
+            --color-primary: #64ffda;
+            --color-secondary: #212121;
+            --color-hover: #43cea2;
+            --font-heading: 'Orbitron', sans-serif;
+            --font-body: 'Roboto Mono', monospace;
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.2);
+            --shadow-lg: 0 8px 12px rgba(0, 0, 0, 0.3);
+        }
 
-    [data-theme="light"] {
-      --color-bg: #f0f0f0;
-      --color-text: #1f1f1f;
-      --color-primary: #007bff;
-      --color-secondary: #ffffff;
-      --color-hover: #0056b3;
-    }
+        [data-theme="light"] {
+            --color-bg: #f9f9f9;
+            --color-text: #333;
+            --color-primary: #03a9f4;
+            --color-secondary: #fff;
+            --color-hover: #29b6f6;
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 8px 12px rgba(0, 0, 0, 0.15);
+        }
 
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--color-bg);
-      color: var(--color-text);
-      transition: background-color 0.5s, color 0.5s;
-    }
+        body {
+            margin: 0;
+            font-family: var(--font-body);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
 
-    header, nav, footer {
-      text-align: center;
-      padding: 1em;
-    }
+        h1,
+        h2,
+        h3 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5em;
+        }
 
-    nav a {
-      color: var(--color-text);
-      text-decoration: none;
-      margin: 0 1em;
-      font-weight: bold;
-      transition: color 0.3s ease;
-    }
+        h1 {
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
 
-    nav a:hover {
-      color: var(--color-primary);
-    }
+        h2 {
+            font-size: 2.2em;
+            margin-top: 1.5em;
+            border-bottom: 2px solid var(--color-primary);
+            padding-bottom: 0.3em;
+        }
 
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 2em;
-    }
+        strong {
+            color: var(--color-primary);
+            font-weight: 500;
+        }
 
-    .proyecto {
-      margin-bottom: 2em;
-      background: var(--color-secondary);
-      padding: 1em;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0, 123, 255, 0.1);
-      transition: transform 0.3s ease;
-      overflow: hidden;
-    }
+        p {
+            font-size: 1.1em;
+            margin-bottom: 1.2em;
+        }
 
-    .proyecto:hover {
-      transform: scale(1.02);
-    }
+        header {
+            text-align: center;
+            padding: 2em;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+        }
 
-    .image-container {
-      width: 100%;
-      aspect-ratio: 1/1;
-      position: relative;
-      overflow: hidden;
-    }
+        nav {
+            text-align: center;
+            padding: 1em;
+            background-color: var(--color-secondary);
+            box-shadow: var(--shadow-md);
+        }
 
-    img.fade-in {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 10px;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-    }
+        nav a {
+            color: var(--color-text);
+            text-decoration: none;
+            margin: 0 1.5em;
+            font-weight: bold;
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+        }
 
-    img.fade-in.mostrar {
-      opacity: 1;
-    }
+        nav a:hover {
+            color: var(--color-primary);
+            transform: scale(1.1);
+        }
 
-    .social-buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      align-items: center;
-    }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3em;
+        }
 
-    .social-btn, .email-btn {
-      background-color: var(--color-primary);
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-      font-size: 16px;
-      transition: background-color 0.3s ease;
-    }
+        #proyectos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2em;
+        }
 
-    .social-btn i, .email-btn i {
-      margin-right: 10px;
-    }
+        .proyecto {
+            background: var(--color-secondary);
+            padding: 1.5em;
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
 
-    .social-btn:hover, .email-btn:hover {
-      background-color: var(--color-hover);
-    }
+        .proyecto:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 18px rgba(0, 0, 0, 0.4);
+        }
 
-    .theme-toggle {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      background: none;
-      border: none;
-      font-size: 24px;
-      color: var(--color-text);
-      cursor: pointer;
-      transition: color 0.3s ease;
-    }
+        .image-container {
+            width: 100%;
+            aspect-ratio: 16/9;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 1em;
+        }
 
-    .theme-toggle:hover {
-      color: var(--color-primary);
-    }
+        img.fade-in {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
 
-    @media (min-width: 768px) {
-      .social-buttons {
-        flex-direction: row;
-        justify-content: center;
-      }
-    }
-  </style>
+        img.fade-in.mostrar {
+            opacity: 1;
+        }
+
+        .proyecto p {
+            font-size: 1em;
+        }
+
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5em;
+            margin-top: 2em;
+        }
+
+        .social-btn,
+        .email-btn {
+            background-color: var(--color-primary);
+            color: var(--color-text);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: var(--shadow-md);
+        }
+
+        .social-btn i,
+        .email-btn i {
+            margin-right: 0.7em;
+        }
+
+        .social-btn:hover,
+        .email-btn:hover {
+            background-color: var(--color-hover);
+            transform: scale(1.05);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 2em;
+            color: var(--color-text);
+            cursor: pointer;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            color: var(--color-primary);
+            transform: rotate(45deg);
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5em;
+            background-color: var(--color-secondary);
+            box-shadow: var(--shadow-md);
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            nav a {
+                margin: 0 0.8em;
+                font-size: 0.9em;
+            }
+
+            .social-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .social-btn,
+            .email-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @keyframes _fadeIn_ {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        #sobre-mi {
+            animation-delay: 0.2s;
+        }
+
+        #proyectos {
+            animation-delay: 0.4s;
+        }
+
+        #contacto {
+            animation-delay: 0.6s;
+        }
+    </style>
 </head>
+
 <body>
-  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-    <i class="fas fa-moon" id="themeIcon"></i>
-  </button>
-
-  <header>
-    <h1>Hola, soy T4skor</h1>
-  </header>
-
-  <nav>
-    <a href="#sobre-mi">Sobre mí</a>
-    <a href="#proyectos">Proyectos</a>
-    <a href="#contacto">Contacto</a>
-  </nav>
-
-  <div class="container">
-    <h2 id="sobre-mi">Sobre mí</h2>
-    <p>¡Hola, soy Pablo, un apasionado de la programación, la tecnología y la creación de proyectos innovadores. Me encanta explorar nuevas herramientas y plataformas, desde el desarrollo de videojuegos hasta la ciberseguridad y la impresión 3D. Siempre estoy en busca de aprender algo nuevo. Mi objetivo es compartir mis experiencias y conocimientos con el mundo. Actualmente estudio 1º de bachillerato tecnológico. Bienvenido a mi espacio, donde encontrarás mis proyectos y mis ideas en constante evolución.</p>
-
-    <h2 id="proyectos">Proyectos</h2>
-    <div id="proyectos">
-      <div class="proyecto">
-        <p><strong>Longer LK4 modificada</strong></p>
-        <div class="image-container">
-          <img class="fade-in" src="media/Longer.jpg" alt="Longer LK4 modificada" />
-        </div>
-      </div>
-      <div class="proyecto">
-        <p><strong>Matriz LED personalizable</strong></p>
-        <div class="image-container">
-          <a href="matriz_led.html">
-            <img class="fade-in" src="media/Matriz.jpg" alt="Matriz LED personalizable" />
-          </a>
-        </div>
-      </div>
-      <div class="proyecto">
-        <p><strong>Reactor ARC de Iron-Man</strong></p>
-        <div class="image-container">
-          <img class="fade-in" src="media/ironman.jpg" alt="Reactor ARC de Iron-Man" />
-        </div>
-      </div>
-      <div class="proyecto">
-        <p><strong>Icarus CanSat – Proyecto 2025</strong></p>
-        <p>Proyecto CanSat desarrollado en el IES Alonso Quijano. Implementación con Arduino para la adquisición de datos de sensores (temperatura, presión y campo magnético) y visualización en tiempo real mediante un script en Python.</p>
-      </div>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <i class="fas fa-moon" id="themeIcon"></i>
+    </button>
+    <header>
+        <h1>Hola, soy <strong style="font-size: 1.2em; color: var(--color-primary);">T4skor</strong></h1>
+        <p style="font-size: 1.3em; color: var(--color-text);">Innovando el Futuro, un Proyecto a la Vez</p>
+    </header>
+    <nav>
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="container">
+        <section id="sobre-mi" class="fade-in-section">
+            <h2>Sobre mí</h2>
+            <p>¡Hola! Soy Pablo, un apasionado por la programación, la tecnología y la creación de proyectos
+                innovadores. Desde el desarrollo de videojuegos hasta la ciberseguridad y la impresión 3D, me encanta
+                explorar nuevas herramientas y plataformas. Siempre estoy en busca de aprender algo nuevo y compartir
+                mis experiencias y conocimientos con el mundo.</p>
+            <p>Actualmente, estoy cursando 1º de bachillerato tecnológico y me dedico a materializar mis ideas en
+                proyectos tangibles. Bienvenido a mi espacio, donde encontrarás mis creaciones en constante evolución.
+            </p>
+        </section>
+        <section id="proyectos" class="fade-in-section">
+            <h2>Proyectos</h2>
+            <div id="proyectos">
+                <div class="proyecto">
+                    <p><strong>Longer LK4 Modificada</strong></p>
+                    <div class="image-container">
+                        <img class="fade-in" src="media/Longer.jpg" alt="Longer LK4 modificada" />
+                    </div>
+                    <p>Mejoras en la Longer LK4 para optimizar la calidad y precisión de la impresión 3D.</p>
+                </div>
+                <div class="proyecto">
+                    <p><strong>Matriz LED Personalizable</strong></p>
+                    <div class="image-container">
+                        <a href="matriz_led.html">
+                            <img class="fade-in" src="media/Matriz.jpg" alt="Matriz LED personalizable" />
+                        </a>
+                    </div>
+                    <p>Pantalla LED controlada por Arduino para mostrar animaciones y mensajes personalizados.</p>
+                </div>
+                <div class="proyecto">
+                    <p><strong>Reactor ARC de Iron-Man</strong></p>
+                    <div class="image-container">
+                        <img class="fade-in" src="media/ironman.jpg" alt="Reactor ARC de Iron-Man" />
+                    </div>
+                    <p>Réplica funcional del Reactor ARC con iluminación LED y detalles precisos.</p>
+                </div>
+                <div class="proyecto">
+                    <p><strong>Icarus CanSat – Proyecto 2025</strong></p>
+                    <p>Proyecto CanSat desarrollado en el IES Alonso Quijano. Implementación con Arduino para la
+                        adquisición de datos de sensores (temperatura, presión y campo magnético) y visualización en
+                        tiempo real mediante un script en Python.</p>
+                </div>
+            </div>
+        </section>
+        <section id="contacto" class="fade-in-section">
+            <h2>Contacto</h2>
+            <p>¡Conéctate conmigo y hablemos de tecnología, proyectos y nuevas ideas!</p>
+            <div class="social-buttons">
+                <button class="social-btn" onclick="window.open('https://instagram.com/3d_t4skor', '_blank')">
+                    <i class="fab fa-instagram"></i> Instagram
+                </button>
+                <button class="social-btn" onclick='window.open("https://github.com/T4skor", "_blank")'>
+                    <i class="fab fa-github"></i> GitHub
+                </button>
+                <button class="email-btn" onclick="window.location.href='mailto:t4skor@gmail.com'">
+                    <i class="fas fa-envelope"></i> t4skor@gmail.com
+                </button>
+            </div>
+        </section>
     </div>
-
-    <h2 id="contacto">Contacto</h2>
-    <div class="social-buttons">
-      <button class="social-btn" onclick="window.open('https://instagram.com/3d_t4skor', '_blank')">
-        <i class="fab fa-instagram"></i> Instagram
-      </button>
-      <button class="social-btn" onclick="window.open('https://github.com/T4skor', '_blank')">
-        <i class="fab fa-github"></i> GitHub
-      </button>
-      <button class="email-btn" onclick="window.location.href='mailto:t4skor@gmail.com'">
-        <i class="fas fa-envelope"></i> t4skor@gmail.com
-      </button>
-    </div>
-  </div>
-
-  <footer>&copy; 2025 - T4skor</footer>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const images = document.querySelectorAll(".fade-in");
-      setTimeout(() => images.forEach(img => img.classList.add("mostrar")), 300);
-
-      const themeToggle = document.getElementById("themeToggle");
-      const themeIcon = document.getElementById("themeIcon");
-
-      function setTheme(theme) {
-        document.documentElement.setAttribute("data-theme", theme);
-        localStorage.setItem("theme", theme);
-        themeIcon.className = theme === "light" ? "fas fa-sun" : "fas fa-moon";
-      }
-
-      const savedTheme = localStorage.getItem("theme") || "dark";
-      setTheme(savedTheme);
-
-      themeToggle.addEventListener("click", () => {
-        const currentTheme = document.documentElement.getAttribute("data-theme");
-        setTheme(currentTheme === "dark" ? "light" : "dark");
-      });
-    });
-  </script>
+    <footer>&copy; 2025 - T4skor - Innovando el Futuro</footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const images = document.querySelectorAll(".fade-in");
+            setTimeout(() => images.forEach(img => img.classList.add("mostrar")), 300);
+            const themeToggle = document.getElementById("themeToggle");
+            const themeIcon = document.getElementById("themeIcon");
+            function setTheme(theme) {
+                document.documentElement.setAttribute("data-theme", theme);
+                localStorage.setItem("theme", theme);
+                themeIcon.className = theme === "light" ? "fas fa-sun" : "fas fa-moon";
+            }
+            const savedTheme = localStorage.getItem("theme") || "dark";
+            setTheme(savedTheme);
+            themeToggle.addEventListener("click", () => {
+                const currentTheme = document.documentElement.getAttribute("data-theme");
+                setTheme(currentTheme === "dark" ? "light" : "dark");
+            });
+            const sections = document.querySelectorAll('.fade-in-section');
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.2
+            });
+            sections.forEach(section => {
+                section.classList.remove('fade-in-section');
+                observer.observe(section);
+            });
+        });
+    </script>
 </body>
 </html>
