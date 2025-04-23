@@ -147,8 +147,8 @@
     }
   </style>
 
-  <!-- Script de RepoWidget para mostrar repositorios de GitHub -->
-  <script src="https://www.repowidget.com/widget.js"></script>
+  <!-- Script de GitHub Embed para mostrar README -->
+  <script src="https://cdn.jsdelivr.net/npm/github-embed@latest/dist/github-embed.min.js"></script>
 </head>
 <body>
   <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
@@ -194,14 +194,10 @@
       <!-- Nueva sección: Icarus CanSat -->
       <div class="proyecto">
         <p><strong>Icarus CanSat – Proyecto 2025</strong></p>
-        <!-- Contenedor para el widget de GitHub -->
-        <div id="cansat-widget"></div>
+        <!-- Embebido del README de GitHub -->
+        <div class="github-embed" data-url="https://github.com/T4skor/Icarus-CanSat/blob/main/README.md"></div>
         <script>
-          createRepoWidget({
-            username: 'T4skor',
-            repo: 'Icarus-CanSat',
-            containerId: 'cansat-widget'
-          });
+          githubEmbed(".github-embed");
         </script>
         <p>Proyecto CanSat desarrollado en el IES Alonso Quijano. Implementación con Arduino para la adquisición de datos de sensores (temperatura, presión y campo magnético) y visualización en tiempo real mediante un script en Python.</p>
       </div>
