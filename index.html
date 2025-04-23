@@ -4,12 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>T4SKOR</title>
-  <!-- Iconos Font Awesome -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-  />
-  <!-- Estilos principales -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
     :root {
       --color-bg: #0d1117;
@@ -18,6 +13,7 @@
       --color-secondary: #161b22;
       --color-hover: #1f6feb;
     }
+
     [data-theme="light"] {
       --color-bg: #f0f0f0;
       --color-text: #1f1f1f;
@@ -73,8 +69,7 @@
 
     .image-container {
       width: 100%;
-      height: 0;
-      padding-top: 100%;
+      aspect-ratio: 1/1;
       position: relative;
       overflow: hidden;
     }
@@ -146,6 +141,7 @@
       }
     }
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/github-embed@latest/dist/github-embed.min.js"></script>
 </head>
 <body>
   <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
@@ -155,6 +151,7 @@
   <header>
     <h1>Hola, soy T4skor</h1>
   </header>
+
   <nav>
     <a href="#sobre-mi">Sobre mí</a>
     <a href="#proyectos">Proyectos</a>
@@ -163,7 +160,7 @@
 
   <div class="container">
     <h2 id="sobre-mi">Sobre mí</h2>
-    <p>¡Hola, soy Pablo, un apasionado de la programación, la tecnología y la creación de proyectos innovadores. Me encanta explorar nuevas herramientas y plataformas, desde el desarrollo de videojuegos hasta la ciberseguridad y la impresión 3D. Siempre estoy en busca de aprender algo nuevo, mi objetivo es compartir mis experiencias y conocimientos con el mundo. Actualmente estoy estudiando 1º de bachillerato tecnológico. Bienvenido a mi espacio, donde encontrarás mis proyectos y mis ideas en constante evolución.</p>
+    <p>¡Hola, soy Pablo, un apasionado de la programación, la tecnología y la creación de proyectos innovadores. Me encanta explorar nuevas herramientas y plataformas, desde el desarrollo de videojuegos hasta la ciberseguridad y la impresión 3D. Siempre estoy en busca de aprender algo nuevo. Mi objetivo es compartir mis experiencias y conocimientos con el mundo. Actualmente estudio 1º de bachillerato tecnológico. Bienvenido a mi espacio, donde encontrarás mis proyectos y mis ideas en constante evolución.</p>
 
     <h2 id="proyectos">Proyectos</h2>
     <div id="proyectos">
@@ -187,10 +184,10 @@
           <img class="fade-in" src="media/ironman.jpg" alt="Reactor ARC de Iron-Man" />
         </div>
       </div>
-
-      <!-- Nueva sección: Icarus CanSat -->
       <div class="proyecto">
         <p><strong>Icarus CanSat – Proyecto 2025</strong></p>
+        <div class="github-embed" data-url="https://github.com/T4skor/Icarus-CanSat/blob/main/README.md"></div>
+        <script>githubEmbed(".github-embed");</script>
         <p>Proyecto CanSat desarrollado en el IES Alonso Quijano. Implementación con Arduino para la adquisición de datos de sensores (temperatura, presión y campo magnético) y visualización en tiempo real mediante un script en Python.</p>
       </div>
     </div>
@@ -212,12 +209,9 @@
   <footer>&copy; 2025 - T4skor</footer>
 
   <script>
-    // Efecto fade-in y toggle de tema
     document.addEventListener("DOMContentLoaded", function () {
       const images = document.querySelectorAll(".fade-in");
-      setTimeout(() => {
-        images.forEach((img) => img.classList.add("mostrar"));
-      }, 300);
+      setTimeout(() => images.forEach(img => img.classList.add("mostrar")), 300);
 
       const themeToggle = document.getElementById("themeToggle");
       const themeIcon = document.getElementById("themeIcon");
