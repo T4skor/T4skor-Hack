@@ -41,9 +41,7 @@
             transition: background-color 0.3s, color 0.3s;
         }
 
-        h1,
-        h2,
-        h3 {
+        h1, h2, h3 {
             font-family: var(--font-heading);
             font-weight: 700;
             text-transform: uppercase;
@@ -128,19 +126,20 @@
 
         .image-container {
             width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             aspect-ratio: 16/9;
-            position: relative;
             overflow: hidden;
             border-radius: 8px;
             margin-bottom: 1em;
+            background-color: #000;
         }
 
         img.fade-in {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
+            height: auto;
+            max-height: 100%;
             object-fit: cover;
             border-radius: 8px;
             opacity: 0;
@@ -162,8 +161,7 @@
             margin-top: 2em;
         }
 
-        .social-btn,
-        .email-btn {
+        .social-btn, .email-btn {
             background-color: var(--color-primary);
             color: var(--color-text);
             border: none;
@@ -178,13 +176,11 @@
             box-shadow: var(--shadow-md);
         }
 
-        .social-btn i,
-        .email-btn i {
+        .social-btn i, .email-btn i {
             margin-right: 0.7em;
         }
 
-        .social-btn:hover,
-        .email-btn:hover {
+        .social-btn:hover, .email-btn:hover {
             background-color: var(--color-hover);
             transform: scale(1.05);
             box-shadow: var(--shadow-lg);
@@ -234,41 +230,10 @@
                 align-items: center;
             }
 
-            .social-btn,
-            .email-btn {
+            .social-btn, .email-btn {
                 width: 100%;
                 justify-content: center;
             }
-        }
-
-        @keyframes _fadeIn_ {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in-section {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 0.8s ease-out forwards;
-        }
-
-        #sobre-mi {
-            animation-delay: 0.2s;
-        }
-
-        #proyectos {
-            animation-delay: 0.4s;
-        }
-
-        #contacto {
-            animation-delay: 0.6s;
         }
     </style>
 </head>
@@ -287,17 +252,12 @@
         <a href="#contacto">Contacto</a>
     </nav>
     <div class="container">
-        <section id="sobre-mi" class="fade-in-section">
+        <section id="sobre-mi">
             <h2>Sobre mí</h2>
             <p>¡Hola! Soy Pablo, un apasionado por la programación, la tecnología y la creación de proyectos
-                innovadores. Desde el desarrollo de videojuegos hasta la ciberseguridad y la impresión 3D, me encanta
-                explorar nuevas herramientas y plataformas. Siempre estoy en busca de aprender algo nuevo y compartir
-                mis experiencias y conocimientos con el mundo.</p>
-            <p>Actualmente, estoy cursando 1º de bachillerato tecnológico y me dedico a materializar mis ideas en
-                proyectos tangibles. Bienvenido a mi espacio, donde encontrarás mis creaciones en constante evolución.
-            </p>
+                innovadores...</p>
         </section>
-        <section id="proyectos" class="fade-in-section">
+        <section id="proyectos">
             <h2>Proyectos</h2>
             <div id="proyectos">
                 <div class="proyecto">
@@ -325,13 +285,11 @@
                 </div>
                 <div class="proyecto">
                     <p><strong>Icarus CanSat – Proyecto 2025</strong></p>
-                    <p>Proyecto CanSat desarrollado en el IES Alonso Quijano. Implementación con Arduino para la
-                        adquisición de datos de sensores (temperatura, presión y campo magnético) y visualización en
-                        tiempo real mediante un script en Python.</p>
+                    <p>Proyecto CanSat desarrollado en el IES Alonso Quijano...</p>
                 </div>
             </div>
         </section>
-        <section id="contacto" class="fade-in-section">
+        <section id="contacto">
             <h2>Contacto</h2>
             <p>¡Conéctate conmigo y hablemos de tecnología, proyectos y nuevas ideas!</p>
             <div class="social-buttons">
@@ -364,21 +322,6 @@
             themeToggle.addEventListener("click", () => {
                 const currentTheme = document.documentElement.getAttribute("data-theme");
                 setTheme(currentTheme === "dark" ? "light" : "dark");
-            });
-            const sections = document.querySelectorAll('.fade-in-section');
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.2
-            });
-            sections.forEach(section => {
-                section.classList.remove('fade-in-section');
-                observer.observe(section);
             });
         });
     </script>
