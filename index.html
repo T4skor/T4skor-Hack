@@ -4,10 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>T4SKOR</title>
+  <!-- Iconos Font Awesome -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
   />
+  <!-- Estilos principales -->
   <style>
     :root {
       --color-bg: #0d1117;
@@ -72,7 +74,7 @@
     .image-container {
       width: 100%;
       height: 0;
-      padding-top: 100%; /* Esto hace que el contenedor sea cuadrado */
+      padding-top: 100%;
       position: relative;
       overflow: hidden;
     }
@@ -83,7 +85,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover; /* Ajusta la imagen para que cubra el contenedor */
+      object-fit: cover;
       border-radius: 10px;
       opacity: 0;
       transition: opacity 1s ease-in-out;
@@ -144,11 +146,15 @@
       }
     }
   </style>
+
+  <!-- Script de RepoWidget para mostrar repositorios de GitHub -->
+  <script src="https://www.repowidget.com/widget.js"></script>
 </head>
 <body>
   <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
     <i class="fas fa-moon" id="themeIcon"></i>
   </button>
+
   <header>
     <h1>Hola, soy T4skor</h1>
   </header>
@@ -157,6 +163,7 @@
     <a href="#proyectos">Proyectos</a>
     <a href="#contacto">Contacto</a>
   </nav>
+
   <div class="container">
     <h2 id="sobre-mi">Sobre mí</h2>
     <p>¡Hola, soy Pablo, un apasionado de la programación, la tecnología y la creación de proyectos innovadores. Me encanta explorar nuevas herramientas y plataformas, desde el desarrollo de videojuegos hasta la ciberseguridad y la impresión 3D. Siempre estoy en busca de aprender algo nuevo, mi objetivo es compartir mis experiencias y conocimientos con el mundo. Actualmente estoy estudiando 1º de bachillerato tecnológico. Bienvenido a mi espacio, donde encontrarás mis proyectos y mis ideas en constante evolución.</p>
@@ -183,6 +190,21 @@
           <img class="fade-in" src="media/ironman.jpg" alt="Reactor ARC de Iron-Man" />
         </div>
       </div>
+
+      <!-- Nueva sección: Icarus CanSat -->
+      <div class="proyecto">
+        <p><strong>Icarus CanSat – Proyecto 2025</strong></p>
+        <!-- Contenedor para el widget de GitHub -->
+        <div id="cansat-widget"></div>
+        <script>
+          createRepoWidget({
+            username: 'T4skor',
+            repo: 'Icarus-CanSat',
+            containerId: 'cansat-widget'
+          });
+        </script>
+        <p>Proyecto CanSat desarrollado en el IES Alonso Quijano. Implementación con Arduino para la adquisición de datos de sensores (temperatura, presión y campo magnético) y visualización en tiempo real mediante un script en Python.</p>
+      </div>
     </div>
 
     <h2 id="contacto">Contacto</h2>
@@ -202,7 +224,7 @@
   <footer>&copy; 2025 - T4skor</footer>
 
   <script>
-    // Fade-in effect y tema
+    // Efecto fade-in y toggle de tema
     document.addEventListener("DOMContentLoaded", function () {
       const images = document.querySelectorAll(".fade-in");
       setTimeout(() => {
