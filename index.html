@@ -1,4 +1,3 @@
-<!-- Gift from OD&H -->
 <!DOCTYPE html>
 <html lang="es">
 
@@ -6,28 +5,32 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>T4SKOR - Innovator & Creator</title>
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Fira+Code:wght@400;600&display=swap"
-    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@300;400;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg-dark: #0a0a0f;
-      --bg-light: #f9f9f9;
-      --text-dark: #e0e0e0;
-      --text-light: #1a1a1a;
-      --primary: #00f5d4;
-      --secondary: #00bbf9;
-      --accent: #f72585;
-      --radius: 16px;
-      --transition: 0.3s ease;
+      --bg-primary: #0a0e27;
+      --bg-secondary: #151b3d;
+      --bg-card: rgba(25, 35, 70, 0.6);
+      --text-primary: #e8eaed;
+      --text-secondary: #a0a5b9;
+      --accent-cyan: #00ffd5;
+      --accent-purple: #a855f7;
+      --accent-pink: #ff0080;
+      --accent-orange: #ff6b35;
+      --glass-bg: rgba(255, 255, 255, 0.05);
+      --glass-border: rgba(255, 255, 255, 0.1);
     }
 
     [data-theme="light"] {
-      --bg-dark: var(--bg-light);
-      --text-dark: var(--text-light);
+      --bg-primary: #f5f7fa;
+      --bg-secondary: #ffffff;
+      --bg-card: rgba(255, 255, 255, 0.8);
+      --text-primary: #1a1f36;
+      --text-secondary: #4a5568;
+      --glass-bg: rgba(255, 255, 255, 0.7);
+      --glass-border: rgba(0, 0, 0, 0.08);
     }
 
     * {
@@ -37,261 +40,801 @@
     }
 
     body {
-      font-family: 'Fira Code', monospace;
-      background: var(--bg-dark);
-      color: var(--text-dark);
-      transition: background var(--transition), color var(--transition);
-      line-height: 1.6;
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      position: relative;
     }
 
+    /* Canvas de fondo con partículas */
+    #particles-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .content-wrapper {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Header mejorado con efectos */
     header {
       text-align: center;
-      padding: 6rem 1rem 4rem;
-      background: linear-gradient(135deg, var(--secondary), var(--accent));
-      color: #fff;
-      border-bottom-left-radius: 50% 10%;
-      border-bottom-right-radius: 50% 10%;
+      padding: 8rem 2rem 5rem;
+      background: linear-gradient(135deg, 
+        rgba(168, 85, 247, 0.1) 0%,
+        rgba(0, 255, 213, 0.1) 50%,
+        rgba(255, 107, 53, 0.1) 100%);
       position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, var(--accent-cyan) 1px, transparent 1px);
+      background-size: 50px 50px;
+      opacity: 0.1;
+      animation: gridMove 20s linear infinite;
+    }
+
+    @keyframes gridMove {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(50px, 50px); }
+    }
+
+    .glitch-wrapper {
+      position: relative;
+      display: inline-block;
     }
 
     header h1 {
-      font-family: 'Chakra Petch', sans-serif;
-      font-size: 3.5rem;
-      font-weight: 700;
-      margin-bottom: .5rem;
-      letter-spacing: 2px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      font-weight: 900;
+      margin-bottom: 1rem;
+      letter-spacing: 0.1em;
+      position: relative;
+      animation: fadeInDown 1s ease;
     }
 
-    header p {
-      font-size: 1.3rem;
-      opacity: .9;
+    .name-highlight {
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple), var(--accent-pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientShift 3s ease infinite;
     }
 
+    @keyframes gradientShift {
+      0%, 100% { filter: hue-rotate(0deg); }
+      50% { filter: hue-rotate(30deg); }
+    }
+
+    header .tagline {
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      font-weight: 300;
+      opacity: 0.9;
+      animation: fadeInUp 1s ease 0.3s both;
+      font-family: 'Space Mono', monospace;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Navegación flotante */
     nav {
       display: flex;
       justify-content: center;
-      gap: 2rem;
-      padding: 1rem;
-      background: rgba(0, 0, 0, 0.2);
+      gap: 1rem;
+      padding: 1.5rem;
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--glass-border);
       position: sticky;
       top: 0;
-      backdrop-filter: blur(10px);
-      z-index: 10;
+      z-index: 100;
+      animation: slideDown 0.8s ease 0.5s both;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-100%);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     nav a {
-      color: var(--text-dark);
+      color: var(--text-primary);
       text-decoration: none;
       font-weight: 600;
-      transition: color var(--transition);
+      padding: 0.7rem 1.5rem;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      font-size: 0.95rem;
+    }
+
+    nav a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+      transition: left 0.5s ease;
+    }
+
+    nav a:hover::before {
+      left: 100%;
     }
 
     nav a:hover {
-      color: var(--primary);
+      background: var(--glass-bg);
+      color: var(--accent-cyan);
+      transform: translateY(-2px);
     }
 
     .container {
-      max-width: 1200px;
+      max-width: 1400px;
       margin: 0 auto;
-      padding: 3rem 1rem;
+      padding: 4rem 2rem;
+    }
+
+    section {
+      margin-bottom: 6rem;
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     section h2 {
-      font-family: 'Chakra Petch', sans-serif;
-      font-size: 2rem;
-      margin-bottom: 1.5rem;
-      color: var(--primary);
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-bottom: 3rem;
       position: relative;
       display: inline-block;
+      font-weight: 700;
+    }
+
+    section h2::before {
+      content: '>';
+      color: var(--accent-cyan);
+      margin-right: 1rem;
+      animation: blink 1.5s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
     }
 
     section h2::after {
       content: '';
       position: absolute;
-      width: 50%;
+      width: 100%;
       height: 3px;
-      bottom: -5px;
+      bottom: -10px;
       left: 0;
-      background: var(--accent);
-      border-radius: 2px;
+      background: linear-gradient(90deg, var(--accent-cyan), transparent);
     }
 
-    #proyectos {
+    /* Sección sobre mí mejorada */
+    #sobre-mi .bio-content {
+      background: var(--bg-card);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 3rem;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      animation: scaleIn 0.8s ease;
+    }
+
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    #sobre-mi p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+    }
+
+    /* Skills/Hobbies Grid */
+    .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
     }
 
-    .proyecto {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      transition: transform .3s ease, box-shadow .3s ease;
+    .skill-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s ease;
       cursor: pointer;
     }
 
+    .skill-card:hover {
+      transform: translateY(-10px) scale(1.05);
+      border-color: var(--accent-cyan);
+      box-shadow: 0 10px 40px rgba(0, 255, 213, 0.2);
+    }
+
+    .skill-card i {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .skill-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .skill-card p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    /* Proyectos Grid Mejorado */
+    .proyectos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .proyecto {
+      background: var(--bg-card);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      animation: fadeInUp 0.8s ease both;
+    }
+
+    .proyecto:nth-child(1) { animation-delay: 0.1s; }
+    .proyecto:nth-child(2) { animation-delay: 0.2s; }
+    .proyecto:nth-child(3) { animation-delay: 0.3s; }
+    .proyecto:nth-child(4) { animation-delay: 0.4s; }
+    .proyecto:nth-child(5) { animation-delay: 0.5s; }
+
+    .proyecto::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple), var(--accent-pink));
+      border-radius: 24px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: -1;
+    }
+
+    .proyecto:hover::before {
+      opacity: 1;
+    }
+
     .proyecto:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, .5);
+      transform: translateY(-15px);
+      box-shadow: 0 25px 50px rgba(0, 255, 213, 0.3);
     }
 
     .image-container {
-      border-radius: var(--radius);
+      position: relative;
       overflow: hidden;
-      margin-bottom: 1rem;
+      height: 250px;
+      background: linear-gradient(135deg, var(--bg-secondary), var(--bg-primary));
     }
 
     .image-container img {
       width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .proyecto:hover .image-container img {
+      transform: scale(1.15);
+    }
+
+    .image-container::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.5));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .proyecto:hover .image-container::after {
+      opacity: 1;
+    }
+
+    .proyecto-content {
+      padding: 2rem;
+    }
+
+    .proyecto-content strong {
+      font-size: 1.3rem;
+      color: var(--accent-cyan);
       display: block;
-      transition: transform .4s ease;
+      margin-bottom: 1rem;
+      font-family: 'Orbitron', sans-serif;
     }
 
-    .proyecto:hover img {
-      transform: scale(1.05);
+    .proyecto-content p {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      font-size: 0.95rem;
     }
 
-    .proyecto strong {
-      color: var(--secondary);
+    .proyecto-tag {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      background: rgba(0, 255, 213, 0.1);
+      border: 1px solid var(--accent-cyan);
+      border-radius: 20px;
+      font-size: 0.8rem;
+      margin-top: 1rem;
+      color: var(--accent-cyan);
+      font-weight: 600;
+    }
+
+    /* Featured Project */
+    .featured-project {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      min-height: 400px;
+    }
+
+    .featured-project .image-container {
+      height: 100%;
+    }
+
+    .featured-project .proyecto-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 3rem;
+    }
+
+    .featured-badge {
+      display: inline-block;
+      padding: 0.5rem 1.2rem;
+      background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
+      border-radius: 20px;
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      width: fit-content;
+    }
+
+    /* Contacto Section */
+    #contacto {
+      text-align: center;
+    }
+
+    #contacto > p {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      margin-bottom: 3rem;
     }
 
     .social-buttons {
       display: flex;
       justify-content: center;
-      gap: 1.5rem;
-      margin-top: 2rem;
+      gap: 2rem;
       flex-wrap: wrap;
+      margin-top: 2rem;
     }
 
     .social-btn {
-      background: var(--primary);
-      color: #000;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 8px;
-      font-weight: bold;
+      background: var(--glass-bg);
+      border: 2px solid var(--glass-border);
+      padding: 1rem 2rem;
+      border-radius: 16px;
+      font-weight: 600;
       display: flex;
       align-items: center;
-      gap: .6rem;
-      transition: background var(--transition), transform var(--transition);
+      gap: 0.8rem;
+      transition: all 0.3s ease;
       cursor: pointer;
+      color: var(--text-primary);
+      font-size: 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .social-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .social-btn:hover::before {
+      left: 100%;
     }
 
     .social-btn:hover {
-      background: var(--secondary);
-      transform: translateY(-3px);
+      transform: translateY(-5px);
+      border-color: var(--accent-cyan);
+      box-shadow: 0 10px 30px rgba(0, 255, 213, 0.3);
+      background: rgba(0, 255, 213, 0.1);
+    }
+
+    .social-btn i {
+      font-size: 1.5rem;
     }
 
     .email-btn {
-      background: var(--accent);
-      color: #fff;
+      border-color: var(--accent-pink);
     }
 
+    .email-btn:hover {
+      border-color: var(--accent-pink);
+      box-shadow: 0 10px 30px rgba(255, 0, 128, 0.3);
+      background: rgba(255, 0, 128, 0.1);
+    }
+
+    /* Footer */
     footer {
       text-align: center;
-      padding: 2rem;
-      font-size: .9rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      margin-top: 3rem;
-      opacity: .7;
+      padding: 3rem 2rem;
+      font-size: 0.9rem;
+      border-top: 1px solid var(--glass-border);
+      margin-top: 4rem;
+      opacity: 0.7;
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
     }
 
+    /* Theme Toggle */
     .theme-toggle {
       position: fixed;
-      right: 20px;
-      bottom: 20px;
-      background: var(--accent);
-      color: #fff;
+      right: 30px;
+      bottom: 30px;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+      color: var(--bg-primary);
       border: none;
       font-size: 1.5rem;
-      padding: 12px;
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
       cursor: pointer;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, .4);
-      transition: transform .3s ease;
+      box-shadow: 0 10px 30px rgba(0, 255, 213, 0.4);
+      transition: all 0.3s ease;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .theme-toggle:hover {
-      transform: rotate(90deg);
+      transform: rotate(180deg) scale(1.1);
+      box-shadow: 0 15px 40px rgba(0, 255, 213, 0.6);
+    }
+
+    /* Scroll Progress Bar */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple), var(--accent-pink));
+      width: 0%;
+      z-index: 1001;
+      transition: width 0.1s ease;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header {
+        padding: 5rem 1.5rem 3rem;
+      }
+
+      nav {
+        gap: 0.5rem;
+        padding: 1rem;
+        flex-wrap: wrap;
+      }
+
+      nav a {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+      }
+
+      .container {
+        padding: 2rem 1.5rem;
+      }
+
+      section h2 {
+        font-size: 2rem;
+      }
+
+      .featured-project {
+        grid-template-columns: 1fr;
+      }
+
+      .proyectos-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+      }
+
+      .social-buttons {
+        gap: 1rem;
+      }
+
+      .social-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      .bio-content {
+        padding: 2rem !important;
+      }
+
+      .featured-project .proyecto-content {
+        padding: 2rem !important;
+      }
     }
   </style>
 </head>
 
 <body>
-  <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+  <canvas id="particles-canvas"></canvas>
+  <div class="scroll-progress" id="scrollProgress"></div>
+  
+  <button class="theme-toggle" id="themeToggle">
+    <i class="fas fa-moon"></i>
+  </button>
 
-  <header>
-    <h1>Hola, soy <span style="color: var(--primary)">T4skor</span></h1>
-    <p>Construyendo el futuro proyecto a proyecto</p>
-  </header>
-
-  <nav>
-    <a href="#sobre-mi">Sobre mí</a>
-    <a href="#proyectos">Proyectos</a>
-    <a href="#contacto">Contacto</a>
-  </nav>
-
-  <div class="container">
-    <section id="sobre-mi">
-      <h2>Sobre mí</h2>
-      <p>¡Hola! Soy Pablo, un apasionado por la programación, la tecnología y la creación de proyectos
-        innovadores. Tengo 17 años, actualmente curso 2º de Bachillerato tecnológico. Mi objetivo es aprender lo máximo posible.</p>
-    </section>
-
-    <section id="proyectos">
-      <h2>Proyectos</h2>
-      <div id="proyectos">
-        <div class="proyecto">
-          <div class="image-container">
-            <img src="media/Longer.jpg" alt="Longer LK4 modificada">
-          </div>
-          <p><strong>Longer LK4 Modificada</strong></p>
-          <p>Mejoras en la Longer LK4 para optimizar la calidad y precisión de la impresión 3D.</p>
-        </div>
-        <div class="proyecto">
-          <div class="image-container">
-            <a href="matriz_led.html">
-              <img src="media/Matriz.jpg" alt="Matriz LED personalizable">
-            </a>
-          </div>
-          <p><strong>Matriz LED Personalizable</strong></p>
-          <p>Pantalla LED controlada por Arduino para mostrar animaciones y mensajes personalizados.</p>
-        </div>
-        <div class="proyecto">
-          <div class="image-container">
-            <img src="media/ironman.jpg" alt="Reactor ARC de Iron-Man">
-          </div>
-          <p><strong>Reactor ARC de Iron-Man</strong></p>
-          <p>Réplica funcional del Reactor ARC con iluminación LED y detalles precisos.</p>
-        </div>
-        <div class="proyecto">
-          <p><strong>Icarus CanSat – Proyecto 2025</strong></p>
-          <p>Proyecto CanSat desarrollado en el IES Alonso Quijano...</p>
-        </div>
+  <div class="content-wrapper">
+    <header>
+      <div class="glitch-wrapper">
+        <h1>Hola, soy <span class="name-highlight">T4skor</span></h1>
       </div>
-    </section>
+      <p class="tagline">Construyendo el futuro proyecto a proyecto</p>
+    </header>
 
-    <section id="contacto">
-      <h2>Contacto</h2>
-      <p>¡Conéctate conmigo y hablemos de tecnología, proyectos y nuevas ideas!</p>
-      <div class="social-buttons">
-        <button class="social-btn" onclick="window.open('https://instagram.com/3d_t4skor', '_blank')">
-          <i class="fab fa-instagram"></i> Instagram
-        </button>
-        <button class="social-btn" onclick="window.open('https://github.com/T4skor', '_blank')">
-          <i class="fab fa-github"></i> GitHub
-        </button>
-        <button class="social-btn email-btn" onclick="window.location.href='mailto:t4skor@gmail.com'">
-          <i class="fas fa-envelope"></i> t4skor@gmail.com
-        </button>
-      </div>
-    </section>
+    <nav>
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#skills">Skills</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+    <div class="container">
+      <section id="sobre-mi">
+        <h2>Sobre mí</h2>
+        <div class="bio-content">
+          <p>
+            ¡Hola! Soy <strong>Pablo</strong>, un apasionado por la programación, la tecnología y la creación de proyectos
+            innovadores. Tengo 17 años y actualmente curso 2º de Bachillerato tecnológico. Mi objetivo es aprender lo máximo 
+            posible y crear soluciones que marquen la diferencia.
+          </p>
+          <p>
+            Me encanta enfrentarme a desafíos técnicos, desde la impresión 3D hasta la programación de microcontroladores. 
+            Cada proyecto es una oportunidad para innovar y mejorar mis habilidades.
+          </p>
+        </div>
+      </section>
+
+      <section id="skills">
+        <h2>Skills & Hobbies</h2>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <i class="fas fa-code"></i>
+            <h3>Programación</h3>
+            <p>Python, Arduino, C++, desarrollo web</p>
+          </div>
+          <div class="skill-card">
+            <i class="fas fa-cube"></i>
+            <h3>Impresión 3D</h3>
+            <p>Diseño CAD, modificaciones hardware, Voron 2.4</p>
+          </div>
+          <div class="skill-card">
+            <i class="fas fa-guitar"></i>
+            <h3>Guitarra</h3>
+            <p>Músico apasionado, explorando sonidos</p>
+          </div>
+          <div class="skill-card">
+            <i class="fas fa-microchip"></i>
+            <h3>Electrónica</h3>
+            <p>Arduino, ESP32, circuitos y LEDs</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="proyectos">
+        <h2>Proyectos</h2>
+        <div class="proyectos-grid">
+          <div class="proyecto featured-project">
+            <div class="image-container">
+              <img src="media/voron.jpg" alt="Voron 2.4" onerror="this.src='https://images.unsplash.com/photo-1614624532983-4ce03382d63d?w=800'" />
+            </div>
+            <div class="proyecto-content">
+              <span class="featured-badge">🔥 Proyecto Destacado</span>
+              <strong>Voron 2.4 - Impresora 3D de Alta Velocidad</strong>
+              <p>
+                He construido desde cero una <strong>Voron 2.4</strong>, una de las impresoras 3D más avanzadas de la comunidad maker. 
+                Con una estructura CoreXY, hotend de alto flujo y una cinemática optimizada, alcanza velocidades de impresión increíbles 
+                manteniendo una calidad excepcional.
+              </p>
+              <p style="margin-top: 1rem;">
+                El ensamblaje requirió más de 100 horas de trabajo, ajustes precisos en firmware (Klipper), y una calibración meticulosa. 
+                El resultado: una máquina capaz de imprimir piezas funcionales con precisión industrial.
+              </p>
+              <span class="proyecto-tag">CoreXY</span>
+              <span class="proyecto-tag">Klipper</span>
+              <span class="proyecto-tag">Alta Velocidad</span>
+            </div>
+          </div>
+
+          <div class="proyecto">
+            <div class="image-container">
+              <img src="media/Longer.jpg" alt="Longer LK4 modificada" onerror="this.src='https://images.unsplash.com/photo-1564410267122-0c35bc2c2945?w=600'" />
+            </div>
+            <div class="proyecto-content">
+              <strong>Longer LK4 Modificada</strong>
+              <p>
+                Mejoras exhaustivas en la Longer LK4 para optimizar la calidad y precisión de impresión. 
+                Incluye upgrades de extrusor, nivelación automática y optimización del firmware.
+              </p>
+              <span class="proyecto-tag">Hardware Mod</span>
+            </div>
+          </div>
+
+          <div class="proyecto">
+            <div class="image-container">
+              <a href="matriz_led.html">
+                <img src="media/Matriz.jpg" alt="Matriz LED personalizable" onerror="this.src='https://images.unsplash.com/photo-1558346547-4439467dc4c5?w=600'" />
+              </a>
+            </div>
+            <div class="proyecto-content">
+              <strong>Matriz LED Personalizable</strong>
+              <p>
+                Pantalla LED controlada por Arduino para mostrar animaciones y mensajes personalizados. 
+                Con interfaz web para control remoto y patrones programables.
+              </p>
+              <span class="proyecto-tag">Arduino</span>
+              <span class="proyecto-tag">LEDs</span>
+            </div>
+          </div>
+
+          <div class="proyecto">
+            <div class="image-container">
+              <img src="media/ironman.jpg" alt="Reactor ARC de Iron-Man" onerror="this.src='https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=600'" />
+            </div>
+            <div class="proyecto-content">
+              <strong>Reactor ARC de Iron-Man</strong>
+              <p>
+                Réplica funcional del Reactor ARC con iluminación LED programable y detalles precisos. 
+                Impreso en 3D con efectos luminosos controlados por microcontrolador.
+              </p>
+              <span class="proyecto-tag">Props</span>
+              <span class="proyecto-tag">3D Print</span>
+            </div>
+          </div>
+
+          <div class="proyecto">
+            <div class="proyecto-content">
+              <strong>Icarus CanSat – Proyecto 2025</strong>
+              <p>
+                Proyecto CanSat desarrollado en el IES Alonso Quijano. Un satélite en miniatura diseñado para 
+                recopilar datos atmosféricos durante su descenso. Incluye sensores de temperatura, presión, 
+                humedad y telemetría en tiempo real.
+              </p>
+              <span class="proyecto-tag">CanSat</span>
+              <span class="proyecto-tag">Sensores</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contacto">
+        <h2>Contacto</h2>
+        <p>¡Conéctate conmigo y hablemos de tecnología, proyectos y nuevas ideas!</p>
+        <div class="social-buttons">
+          <button class="social-btn" onclick="window.open('https://instagram.com/3d_t4skor', '_blank')">
+            <i class="fab fa-instagram"></i> Instagram
+          </button>
+          <button class="social-btn" onclick="window.open('https://github.com/T4skor', '_blank')">
+            <i class="fab fa-github"></i> GitHub
+          </button>
+          <button class="social-btn email-btn" onclick="window.location.href='mailto:t4skor@gmail.com'">
+            <i class="fas fa-envelope"></i> t4skor@gmail.com
+          </button>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      &copy; 2025 - T4skor - Innovando el Futuro
+    </footer>
   </div>
 
-  <footer>&copy; 2025 - T4skor - Innovando el Futuro</footer>
-
   <script>
+    // Theme Toggle
     const toggleBtn = document.getElementById("themeToggle");
     const root = document.documentElement;
     let darkMode = true;
@@ -300,6 +843,138 @@
       darkMode = !darkMode;
       root.setAttribute("data-theme", darkMode ? "dark" : "light");
       toggleBtn.innerHTML = darkMode ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+    });
+
+    // Scroll Progress Bar
+    window.addEventListener('scroll', () => {
+      const scrollProgress = document.getElementById('scrollProgress');
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = (scrollTop / docHeight) * 100;
+      scrollProgress.style.width = scrollPercent + '%';
+    });
+
+    // Particles Animation
+    const canvas = document.getElementById('particles-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let animationId;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 1;
+        this.speedX = Math.random() * 0.5 - 0.25;
+        this.speedY = Math.random() * 0.5 - 0.25;
+        this.opacity = Math.random() * 0.5 + 0.2;
+      }
+
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        if (this.x > canvas.width) this.x = 0;
+        if (this.x < 0) this.x = canvas.width;
+        if (this.y > canvas.height) this.y = 0;
+        if (this.y < 0) this.y = canvas.height;
+      }
+
+      draw() {
+        ctx.fillStyle = `rgba(0, 255, 213, ${this.opacity})`;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    function initParticles() {
+      particles = [];
+      const particleCount = Math.floor((canvas.width * canvas.height) / 15000);
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
+    }
+
+    function connectParticles() {
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          if (distance < 120) {
+            ctx.strokeStyle = `rgba(0, 255, 213, ${0.15 * (1 - distance / 120)})`;
+            ctx.lineWidth = 0.5;
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      particles.forEach(particle => {
+        particle.update();
+        particle.draw();
+      });
+      
+      connectParticles();
+      animationId = requestAnimationFrame(animate);
+    }
+
+    resizeCanvas();
+    initParticles();
+    animate();
+
+    window.addEventListener('resize', () => {
+      resizeCanvas();
+      initParticles();
+    });
+
+    // Smooth Scroll
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Intersection Observer for animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('section').forEach(section => {
+      section.style.opacity = '0';
+      section.style.transform = 'translateY(20px)';
+      section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+      observer.observe(section);
     });
   </script>
 </body>
